@@ -14,7 +14,7 @@ public class API
 {
 	private String baseURL;
 	
-	private static final String PROTOCOL = "http";
+	private static final String PROTOCOL = "https";
 
 	private Map<String, String> parameters;
 	
@@ -107,8 +107,6 @@ public class API
 	{
 		String req = formRequestURL();
 		sendHTTPRequest(req);
-		
-		System.out.println("Sent HTTP request: " + req);
 
 		InputStreamReader isr = new InputStreamReader(currentRequestInputStream);
 		BufferedReader br = new BufferedReader(isr);
