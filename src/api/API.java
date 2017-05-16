@@ -108,6 +108,8 @@ public class API
 		String req = formRequestURL();
 		sendHTTPRequest(req);
 
+		System.out.println("Sent HTTP request: " + req);
+
 		InputStreamReader isr = new InputStreamReader(currentRequestInputStream);
 		BufferedReader br = new BufferedReader(isr);
 

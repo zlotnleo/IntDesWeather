@@ -1,13 +1,13 @@
 package api;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import api.xml.XMLObject;
 
 public class WeatherAPITester
 {
-	//Google example request: https://maps.googleapis.com/maps/api/place/textsearch/xml?location=45.833611,6.865&type=point_of_interest&query=ski+mountain&key=AIzaSyCuZmZka615kDgM7P-3d429nlfnZkl6x0w
+	//Weather example request: https://api.worldweatheronline.com/premium/v1/ski.ashx?q=New+York&format=xml&key=e6d4c684320349cab8b131651171105
+	//Google example request: https://maps.googleapis.com/maps/api/place/textsearch/xml?query=ski+mountain&location=45.833611,6.865&type=point_of_interest&key=AIzaSyCuZmZka615kDgM7P-3d429nlfnZkl6x0w
 	
 	private static final String WEATHER_API_URL = "api.worldweatheronline.com/premium/v1/ski.ashx";
 	private static final String GOOGLE_API_URL = "maps.googleapis.com/maps/api/place/textsearch/xml";
