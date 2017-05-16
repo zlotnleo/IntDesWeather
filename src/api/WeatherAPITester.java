@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import api.xml.XMLObject;
 
-public class APITester
+public class WeatherAPITester
 {
-	private static WeatherAPI api;
+	private static API api;
 	
 	public static void main(String args[])
 	{
-		api = new WeatherAPI();
+		api = new API();
 		api.startNewRequest();
 		api.setParameter("q", "New+York");
 		

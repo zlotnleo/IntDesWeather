@@ -10,7 +10,7 @@ import java.util.Map;
 import api.xml.IterativeXMLParser;
 import api.xml.XMLObject;
 
-public class WeatherAPI
+public class API
 {
 	private static final String PROTOCOL = "http";
 	private static final String URL = "api.worldweatheronline.com/premium/v1/ski.ashx";
