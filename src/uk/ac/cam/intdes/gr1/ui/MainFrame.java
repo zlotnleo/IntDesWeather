@@ -5,7 +5,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class MainFrame {
-    public static Scene createScene(TopPanel tp, Pane contents){
+    public static Scene createScene(TopPanel tp, Content contents){
         VBox vbox = new VBox();
         vbox.getChildren().addAll(tp, contents);
         return new Scene(vbox);

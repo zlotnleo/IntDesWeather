@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import uk.ac.cam.intdes.gr1.Consts;
 
 public class TopPanel extends HBox{
-    public TopPanel(Pane left, String text, Pane right){
+    public TopPanel(TopPanelButton left, String text, TopPanelButton right){
         super(0);
 
         setPrefSize(Consts.SCREEN_WIDTH, Consts.TOP_BAR_HEIGHT);
