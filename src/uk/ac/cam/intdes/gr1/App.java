@@ -23,7 +23,7 @@ public class App extends Application {
         Pane left_contol = new Pane();
         left_contol.setBackground(new Background(new BackgroundFill(Color.AQUA, null, null)));
         Pane right_control = new Pane();
-        right_control.setBackground(new Background(new BackgroundImage(new Image("/gear.png"),
+        right_control.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/gear.png").toString()),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
                 new BackgroundSize(
                         1.0, 1.0, true, true,
