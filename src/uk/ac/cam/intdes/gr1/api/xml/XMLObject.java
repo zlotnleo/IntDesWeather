@@ -61,6 +61,11 @@ public class XMLObject
 	@Override
 	public String toString()
 	{
-		return name;
+		String app = "";
+		for (XMLObject obj : children)
+		{
+			app += "\n" + obj.toString();
+		}
+		return name + "" + app;
 	}
 }

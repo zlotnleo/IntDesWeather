@@ -11,6 +11,17 @@ public class TopMidBottomWeatherResponseObject
 	
 	private int weatherCode;
 
+	public TopMidBottomWeatherResponseObject(int tempC, int tempF, int windSpeedMiles, int windSpeedKmph, int winDirDegree, String windDir16Point, int weatherCode)
+	{
+		this.tempC = tempC;
+		this.tempF = tempF;
+		this.windSpeedMiles = windSpeedMiles;
+		this.windSpeedKmph = windSpeedKmph;
+		this.winDirDegree = winDirDegree;
+		this.windDir16Point = windDir16Point;
+		this.weatherCode = weatherCode;
+	}
+
 	public int getTempC()
 	{
 		return tempC;
