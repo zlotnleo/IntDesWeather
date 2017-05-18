@@ -15,16 +15,24 @@ import javafx.scene.paint.Color;
 public class SettingButton extends Pane{
 
     public SettingButton(@NamedArg("Button text") String text, @NamedArg("Event Handler") @Nullable EventHandler<?
+            super MouseEvent> onClick, int height, int width, Color backColor){
+
+        super();
+
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, onClick);
+        this.setPrefWidth(width);
+        this.setPrefHeight(height);
+        this.setColor(backColor);
+    }
+
+    public SettingButton(@NamedArg("Button text") String text, @NamedArg("Event Handler") @Nullable EventHandler<?
             super MouseEvent> onClick, int height, int width){
 
         super();
-        // TODONE: Sort out these disgusting sizes.
 
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, onClick);
-        System.out.println(String.format("Width: %d, Height: %d", height,width));
         this.setPrefWidth(width);
         this.setPrefHeight(height);
-        setColor(Color.AQUA);
     }
 
     public void setColor(Color c){

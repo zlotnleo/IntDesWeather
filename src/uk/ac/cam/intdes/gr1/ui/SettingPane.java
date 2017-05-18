@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import uk.ac.cam.intdes.gr1.AppSettings;
 
 public class SettingPane extends GridPane{
@@ -23,15 +24,17 @@ public class SettingPane extends GridPane{
         VBox TempBox = new VBox(new SettingButton("sadf", new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                SettingButton sb = (SettingButton)event.getSource();
+                sb.setColor(Color.BLACK);
                 System.out.println("Hey you clicked on a thing");
             }
-        }, (int)getPrefHeight()/4, (int)getPrefWidth()/2-30));
+        }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30, Color.LIGHTGRAY));
         VBox DistBox = new VBox(new SettingButton("sadf", new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println("Hey you clicked on a different thing");
             }
-        }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30));
+        }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30, Color.LIGHTGRAY));
 
         this.getColumnConstraints().addAll(c1,c2);
         addRow(0,lb1,TempBox);
