@@ -9,22 +9,27 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class WeatherCard extends VBox {
+public class WeatherCard extends HBox {
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
     public enum WeatherType {Sunny, Clear, Cloudy, Fog, Snow, Rain}; // TODO: add all
     public enum SkiingConditions {Good, Bad, Impossible};
 
-    private static String iconPathBase = "static/icons/";
+    private static String iconPathBase = "@../../static/icons/";
     private static HashMap<WeatherType, String> iconPath;
     static {
         iconPath = new HashMap<>();
-        iconPath.put(WeatherType.Sunny, "sunny.png");
-        iconPath.put(WeatherType.Sunny, "clear.png");
-        iconPath.put(WeatherType.Sunny, "cloudy.png");
-        iconPath.put(WeatherType.Sunny, "fog.png");
-        iconPath.put(WeatherType.Sunny, "snow.png");
-        iconPath.put(WeatherType.Sunny, "rain.png");
+        iconPath.put(WeatherType.Sunny, "sunny@3x.png");
+        iconPath.put(WeatherType.Clear, "clear@3x.png");
+        iconPath.put(WeatherType.Cloudy, "cloudy@3x.png");
+        iconPath.put(WeatherType.Fog, "fog@3x.png");
+        iconPath.put(WeatherType.Snow, "snow@3x.png");
+        iconPath.put(WeatherType.Rain, "rain@3x.png");
     }
 
     @FXML private ImageView weatherIcon;
@@ -39,7 +44,15 @@ public class WeatherCard extends VBox {
 
     public void setWeatherType(WeatherType weatherType) {
         this.weatherType = weatherType;
-        this.weatherIcon.setImage(new Image(iconPathBase + iconPath.get(weatherType)));
+        String iconUrl = iconPathBase + iconPath.get(weatherType);
+        Image img;
+        try {
+            img = new Image(iconUrl);
+        } catch (IllegalArgumentException e) {
+            System.out.println("could not find image");
+            return;
+        }
+        this.weatherIcon.setImage(img);
     }
 
     private WeatherType weatherType;
@@ -48,7 +61,7 @@ public class WeatherCard extends VBox {
 
     public WeatherCard() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "custom_control.fxml"));
+                "weather_card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -61,11 +74,5 @@ public class WeatherCard extends VBox {
         this.setOnMouseClicked(e -> {
             // TODO: need to to go to detailed vew
         });
-    }
-
-
-    @FXML
-    protected void doSomething() {
-        System.out.println("The button was clicked!");
     }
 }
