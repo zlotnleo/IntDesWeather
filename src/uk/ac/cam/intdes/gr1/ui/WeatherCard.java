@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import uk.ac.cam.intdes.gr1.api.ResortWeather;
 
 public class WeatherCard extends HBox {
     public void setTemperature(double temperature) {
@@ -60,6 +61,7 @@ public class WeatherCard extends HBox {
     private double temperature; // celsius
 
     public WeatherCard() {
+        // TODO: might not want default constructor
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fxml/weather_card.fxml"));
         fxmlLoader.setRoot(this);
@@ -74,5 +76,11 @@ public class WeatherCard extends HBox {
         this.setOnMouseClicked(e -> {
             // TODO: need to to go to detailed vew
         });
+    }
+
+    public WeatherCard(ResortWeather resort) {
+        this();
+
+        setLocationName(resort.getName());
     }
 }
