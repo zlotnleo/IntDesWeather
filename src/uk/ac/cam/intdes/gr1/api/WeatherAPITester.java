@@ -1,19 +1,8 @@
 package uk.ac.cam.intdes.gr1.api;
 
-import java.util.List;
-
-import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
-import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
-
 public class WeatherAPITester
 {
-	private static final String WEATHER_API_URL = "api.worldweatheronline.com/premium/v1/ski.ashx";
-
-	private static final String WEATHER_API_KEY = "e6d4c684320349cab8b131651171105";
-
-	private static final String FORMAT = "xml";
-
-	private static API weatherAPI;
+	private static WeatherAPIInterface weatherAPI;
 	private static GoogleAPIInterface googleAPI;
 
 	public static void main(String args[])
@@ -59,14 +48,18 @@ public class WeatherAPITester
 //			System.out.println(o.getChildOfTag("name").getData());
 //		}
 		
-		googleAPI = new GoogleAPIInterface();
+//		googleAPI = new GoogleAPIInterface();
+//		
+////		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(42.3675294, -71.186966));
+//		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.205, 0.119));
+//		
+//		for (LocationResponseObject r : resp)
+//		{
+//			System.out.println(r);
+//		}
 		
-//		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(42.3675294, -71.186966));
-		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.205, 0.119));
+		weatherAPI = new WeatherAPIInterface();
 		
-		for (LocationResponseObject r : resp)
-		{
-			System.out.println(r);
-		}
+		weatherAPI
 	}
 }

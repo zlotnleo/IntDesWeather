@@ -1,6 +1,7 @@
 package uk.ac.cam.intdes.gr1.api;
 
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
+import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
 
 public class WeatherAPIInterface
 {
@@ -16,6 +17,17 @@ public class WeatherAPIInterface
 	
 	public void getWeatherReportAt(Coordinate c)
 	{
+		double lat = c.getLattitude();
+		double lon = c.getLongitude();
 		
+		api.startNewRequest();
+		
+		api.setParameter("format", "xml");
+		api.setParameter("q", lat + "," + lon);
+		api.setParameter("key", API_KEY);
+		
+		XMLObject resp = api.execute();
+		
+		System.out.println(resp);
 	}
 }
