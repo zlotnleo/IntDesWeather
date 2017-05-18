@@ -6,8 +6,7 @@ import javafx.scene.layout.*;
 import uk.ac.cam.intdes.gr1.Consts;
 
 public class SettingsButton extends Button {
-    public static final Image SETTING_ICON = new Image("/static/icons/gear.png");
-
+    public static final Image SETTING_ICON = new Image("/icons/gear.png");
 
     public static final Background SETTING_ICON_BACKGROUND = new Background(new BackgroundImage(SETTING_ICON,
             BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
@@ -20,7 +19,6 @@ public class SettingsButton extends Button {
     public SettingsButton() {
         super();
 
-        getStylesheets().add(Consts.BUTTON_STYLE);
         setBackground(SETTING_ICON_BACKGROUND);
 
         setOnMouseClicked(e -> {

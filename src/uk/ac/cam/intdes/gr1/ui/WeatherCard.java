@@ -1,4 +1,4 @@
-package weather_card;
+package uk.ac.cam.intdes.gr1.ui;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -17,8 +17,8 @@ public class WeatherCard extends HBox {
         this.temperature = temperature;
     }
 
-    public enum WeatherType {Sunny, Clear, Cloudy, Fog, Snow, Rain}; // TODO: add all
-    public enum SkiingConditions {Good, Bad, Impossible};
+    public enum WeatherType {Sunny, Clear, Cloudy, Fog, Snow, Rain} // TODO: add all
+    public enum SkiingConditions {Good, Bad, Impossible}
 
     private static String iconPathBase = "@../../static/icons/";
     private static HashMap<WeatherType, String> iconPath;

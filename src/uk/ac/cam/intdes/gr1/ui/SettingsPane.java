@@ -1,4 +1,4 @@
-package ui;
+package uk.ac.cam.intdes.gr1.ui;
 
 import javafx.scene.layout.*;
 
