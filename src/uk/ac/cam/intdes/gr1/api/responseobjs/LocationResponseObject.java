@@ -1,4 +1,4 @@
-package api.responseobjs;
+package uk.ac.cam.intdes.gr1.api.responseobjs;
 
 public class LocationResponseObject
 {

@@ -1,9 +1,9 @@
-package api;
+package uk.ac.cam.intdes.gr1.api;
 
 import java.util.List;
 
-import api.responseobjs.Coordinate;
-import api.responseobjs.LocationResponseObject;
+import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
+import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
 
 public class WeatherAPITester
 {

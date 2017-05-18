@@ -1,4 +1,4 @@
-package api.xml;
+package uk.ac.cam.intdes.gr1.api.xml;
 
 import java.util.ArrayList;
 import java.util.List;

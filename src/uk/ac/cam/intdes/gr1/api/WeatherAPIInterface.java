@@ -1,4 +1,6 @@
-package api;
+package uk.ac.cam.intdes.gr1.api;
+
+import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
 
 public class WeatherAPIInterface
 {

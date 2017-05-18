@@ -1,4 +1,4 @@
-package api;
+package uk.ac.cam.intdes.gr1.api;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -7,8 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import api.xml.IterativeXMLParser;
-import api.xml.XMLObject;
+
+import uk.ac.cam.intdes.gr1.api.xml.IterativeXMLParser;
+import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
 
 public class API
 {

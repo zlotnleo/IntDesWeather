@@ -1,11 +1,11 @@
-package api;
+package uk.ac.cam.intdes.gr1.api;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import api.responseobjs.Coordinate;
-import api.responseobjs.LocationResponseObject;
-import api.xml.XMLObject;
+import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
+import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
+import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
 
 public class GoogleAPIInterface
 {
