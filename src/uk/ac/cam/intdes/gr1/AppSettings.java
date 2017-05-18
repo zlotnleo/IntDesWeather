@@ -18,7 +18,7 @@ public class AppSettings {
 
     private void loadSettings(){
         // TODO: load settings from file for consistency.
-
+        
     }
 
     public void setFahrenheit(boolean mode){
