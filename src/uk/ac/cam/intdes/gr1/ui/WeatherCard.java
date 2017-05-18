@@ -20,7 +20,7 @@ public class WeatherCard extends HBox {
     public enum WeatherType {Sunny, Clear, Cloudy, Fog, Snow, Rain} // TODO: add all
     public enum SkiingConditions {Good, Bad, Impossible}
 
-    private static String iconPathBase = "@../../static/icons/";
+    private static String iconPathBase = "/icons/";
     private static HashMap<WeatherType, String> iconPath;
     static {
         iconPath = new HashMap<>();
@@ -61,7 +61,7 @@ public class WeatherCard extends HBox {
 
     public WeatherCard() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "weather_card.fxml"));
+                "/fxml/weather_card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
