@@ -1,8 +1,8 @@
-package api;
+package uk.ac.cam.intdes.gr1.api;
 
 import java.util.ArrayList;
 
-import api.xml.XMLObject;
+import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
 
 public class WeatherAPITester
 {
