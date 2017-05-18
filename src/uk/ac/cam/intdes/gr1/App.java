@@ -26,9 +26,11 @@ public class App extends Application {
 
         this.primaryStage = primaryStage;
 
+        BackButton backButton = new BackButton();
+        backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, to_home);
         settings = MainFrame.createScene(
                 new TopPanel(
-                        new BackButton(),
+                        backButton,
                         "Settings",
                         null
                 ),
@@ -36,11 +38,13 @@ public class App extends Application {
         );
 
 
+        SettingsButton settingsButton = new SettingsButton();
+        settingsButton.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
         home = MainFrame.createScene(
                 new TopPanel(
                         null,
                         "WTS",
-                        new SettingsButton()
+                        settingsButton
                 ),
                 HomeContent.getInstance()
         );
