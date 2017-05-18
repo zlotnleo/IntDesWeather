@@ -40,7 +40,7 @@ public class GoogleAPIInterface
 		{
 			String name = o.getChildOfTag("name").getData();
 			XMLObject geom = o.getChildOfTag("geometry");
-			XMLObject location = o.getChildOfTag("location");
+			XMLObject location = geom.getChildOfTag("location");
 			
 			int lat = Integer.parseInt(location.getChildOfTag("lat").getData());
 			int lon = Integer.parseInt(location.getChildOfTag("lng").getData());
