@@ -28,9 +28,9 @@ public class App extends Application {
 
         settings = MainFrame.createScene(
                 new TopPanel(
-                        new TopPanelButton(to_home, Consts.BACK_ICON_BACKGROUND),
+                        new BackButton(),
                         "Settings",
-                        new TopPanelButton(null, null)
+                        null
                 ),
                 SettingsContent.getInstance()
         );
@@ -38,9 +38,9 @@ public class App extends Application {
 
         home = MainFrame.createScene(
                 new TopPanel(
-                        new TopPanelButton(null, null),
+                        null,
                         "WTS",
-                        new TopPanelButton(to_settings, Consts.SETTING_ICON_BACKGROUND)
+                        new SettingsButton()
                 ),
                 HomeContent.getInstance()
         );
