@@ -21,7 +21,9 @@ public class WeatherCardRow extends TitledPane{
         cardBox = new HBox();
 
         sp.setContent(cardBox);
+        sp.setFitToHeight(true);
         sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         setContent(sp);
     }
 

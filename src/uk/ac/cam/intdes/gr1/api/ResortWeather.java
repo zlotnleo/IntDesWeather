@@ -6,6 +6,9 @@ public class ResortWeather {
     public ResortWeather() {
 
     }
+    public ResortWeather(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
