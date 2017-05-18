@@ -7,20 +7,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root style="-fx-background-color: #2498b5;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<fx:root style="-fx-background-color: #2498b5;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
       <ImageView fx:id="weatherIcon" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
             <Image url="@../static/icons/sunny.png" />
-         </image>
       </ImageView>
       <VBox prefHeight="200.0" prefWidth="100.0">
-          <children>
-              <Label fx:id="locationLabel" text="Label" textFill="WHITE">
-               <font>
-                  <Font size="28.0" />
-               </font></Label>
-          </children>
+          <Label fx:id="locationLabel" text="Label" textFill="WHITE">
+           <font>
+              <Font size="28.0" />
+           </font></Label>
       </VBox>
-   </children>
 </fx:root>
