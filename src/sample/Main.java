@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import uk.ac.cam.intdes.gr1.ui.WeatherCard;
 
 public class Main extends Application {
-    private ScrollPane createRow() {
+    private TitledPane createRow() {
         ScrollPane sp1 = new ScrollPane();
         HBox hbox = new HBox();
 
@@ -31,7 +31,10 @@ public class Main extends Application {
         sp1.setContent(hbox);
         sp1.setFitToHeight(true);
         sp1.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        return sp1;
+
+        TitledPane tp = new TitledPane("general", sp1);
+        tp.setCollapsible(false);
+        return tp;
     }
 
     @Override
