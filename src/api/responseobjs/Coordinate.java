@@ -2,28 +2,28 @@ package api.responseobjs;
 
 public class Coordinate
 {
-	private int longitude;
-	private int lattitude;
+	private double lattitude;
+	private double longitude;
 	
-	public Coordinate(int lo, int la)
+	public Coordinate(double la, double lo)
 	{
-		this.longitude = lo;
 		this.lattitude = la;
+		this.longitude = lo;
 	}
 
-	public int getLongitude()
-	{
-		return longitude;
-	}
-
-	public int getLattitude()
+	public double getLattitude()
 	{
 		return lattitude;
+	}
+
+	public double getLongitude()
+	{
+		return longitude;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return longitude + "," + lattitude;
+		return "Lat: " + lattitude + ", Long: " + longitude;
 	}
 }

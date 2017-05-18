@@ -20,4 +20,10 @@ public class LocationResponseObject
 	{
 		return coord;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return name + " " + coord;
+	}
 }
