@@ -19,16 +19,14 @@ public class GoogleAPIInterface
 		api = new API(API_URL);
 	}
 	
-	//https://maps.googleapis.com/maps/api/place/textsearch/xml?query=ski+mountain&location=42.3675294,-71.186966&radius=10000&key=AIzaSyAvhCQhMsA2L4Aebimf5OT6wLVYRLjP6co
-	
 	public List<LocationResponseObject> getNearbySkiLocations(Coordinate loc)
 	{
 		List<LocationResponseObject> r = new ArrayList<>();
 		
 		api.startNewRequest();
 		
-		api.setParameter("location", loc.getLongitude() + "," + loc.getLattitude()); // the alps
-		api.setParameter("type", "point_of_interest");
+		api.setParameter("location", loc.getLattitude() + "," + loc.getLongitude()); // the alps
+		api.setParameter("radius", "100");
 		api.setParameter("query", "ski+mountain");
 		api.setParameter("key", API_KEY);
 		
@@ -47,7 +45,7 @@ public class GoogleAPIInterface
 			double lat = Double.parseDouble(location.getChildOfTag("lat").getData());
 			double lon = Double.parseDouble(location.getChildOfTag("lng").getData());
 			
-			Coordinate c = new Coordinate(lon, lat);
+			Coordinate c = new Coordinate(lat, lon);
 			
 			LocationResponseObject obj = new LocationResponseObject(name, c);
 			

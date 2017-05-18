@@ -4,22 +4,14 @@ import java.util.List;
 
 import api.responseobjs.Coordinate;
 import api.responseobjs.LocationResponseObject;
-import api.xml.XMLObject;
 
 public class WeatherAPITester
 {
-	// Weather example request:
-	// https://api.worldweatheronline.com/premium/v1/ski.ashx?q=New+York&format=xml&key=e6d4c684320349cab8b131651171105
-	// Google example request:
-	// https://maps.googleapis.com/maps/api/place/textsearch/xml?query=ski+mountain&location=45.833611,6.865&type=point_of_interest&key=AIzaSyCuZmZka615kDgM7P-3d429nlfnZkl6x0w
-
 	private static final String WEATHER_API_URL = "api.worldweatheronline.com/premium/v1/ski.ashx";
 
 	private static final String WEATHER_API_KEY = "e6d4c684320349cab8b131651171105";
 
-	private static final String FORMAT = "xml"; // Only used in the weather API,
-												// Google API is xml defined in
-												// the URL
+	private static final String FORMAT = "xml";
 
 	private static API weatherAPI;
 	private static GoogleAPIInterface googleAPI;
@@ -69,7 +61,8 @@ public class WeatherAPITester
 		
 		googleAPI = new GoogleAPIInterface();
 		
-		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(42.3675294, -71.186966));
+//		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(42.3675294, -71.186966));
+		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.205, 0.119));
 		
 		for (LocationResponseObject r : resp)
 		{
