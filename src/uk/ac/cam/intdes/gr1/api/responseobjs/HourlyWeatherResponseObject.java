@@ -22,9 +22,14 @@ public class HourlyWeatherResponseObject
 	private int chanceOfSnow;
 	private int chanceOfThunder;
 	
+	private TopMidBottomWeatherResponseObject top;
+	private TopMidBottomWeatherResponseObject mid;
+	private TopMidBottomWeatherResponseObject bottom;
+	
 	public HourlyWeatherResponseObject(int time, double snowfall, int freezeLevel, double precip, int humidity, int visibility, int pressure, 
 			int cloudCover, int chanceOfRain, int chanceOfRemDry, int chanceOfWindy, int chanceOfOvercast, int chanceOfSunshine, int chanceOfFrost, 
-			int chanceOfHighTemp, int chanceOfFog, int chanceOfSnow, int chanceOfThunder)
+			int chanceOfHighTemp, int chanceOfFog, int chanceOfSnow, int chanceOfThunder, TopMidBottomWeatherResponseObject top, TopMidBottomWeatherResponseObject mid,
+			TopMidBottomWeatherResponseObject bottom)
 	{
 		this.time = time;
 		this.snowfall = snowfall;
@@ -44,6 +49,10 @@ public class HourlyWeatherResponseObject
 		this.chanceOfFog = chanceOfFog;
 		this.chanceOfSnow = chanceOfSnow;
 		this.chanceOfThunder = chanceOfThunder;
+		
+		this.top = top;
+		this.mid = mid;
+		this.bottom = bottom;
 	}
 	
 	public int getTime()
@@ -134,5 +143,20 @@ public class HourlyWeatherResponseObject
 	public int getChanceOfThunder()
 	{
 		return chanceOfThunder;
+	}
+
+	public TopMidBottomWeatherResponseObject getTop()
+	{
+		return top;
+	}
+
+	public TopMidBottomWeatherResponseObject getMid()
+	{
+		return mid;
+	}
+
+	public TopMidBottomWeatherResponseObject getBottom()
+	{
+		return bottom;
 	}
 }
