@@ -26,17 +26,19 @@ public class APISystemTester
 		LocationResponseObject currentLoc = CurrentLocationApi.getLocation();
 		System.out.println("Current Location: " + currentLoc.toString());
 
-		Coordinate location = googleAPI.getLocation("geneva");
+        List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(currentLoc.getCoordinate());
 		
 		//Returns a list of the nearest ski resort areas to the inputed location
 //		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(47.376068,8.536694));
 //		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.210808,0.091348));
-//        List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(null);
+
 //
-//		for (LocationResponseObject l : resp)
-//		{
-//			System.out.println(l);
-//		}
+		for (LocationResponseObject l : resp)
+		{
+			System.out.println(l);
+//            WeekWeatherResponseObject w = weatherAPI.getWeatherReportAt(l.getCoordinate());
+//            w.
+		}
 
 //		WeekWeatherResponseObject w = weatherAPI.getWeatherReportAt(new Coordinate(56.34,-56.23));
 		
