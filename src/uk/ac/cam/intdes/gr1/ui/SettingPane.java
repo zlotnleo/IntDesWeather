@@ -11,17 +11,16 @@ public class SettingPane extends GridPane{
         TODO: set default colours on program load.
         TODO: Internal border for SettingPane.
         TODO: Fonts and colours
-        TODO:
 
         Was thinking of using Javafx Node ID to identify boxes safely but it's not being recognised for some reason.
         Resorting to messy getParent() calls.
 
     */
 
-    AppSettings context = AppSettings.getInstance();
+    // AppSettings context = AppSettings.getInstance();
 
 
-    public SettingPane(int prefHeight, int prefWidth) {
+    public SettingPane(int prefHeight, int prefWidth, boolean fileTemp, boolean fileDist) {
 
         this.setGridLinesVisible(true);
         // Grid lines visible (testing purposes)
