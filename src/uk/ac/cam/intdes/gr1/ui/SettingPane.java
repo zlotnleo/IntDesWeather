@@ -9,6 +9,11 @@ import uk.ac.cam.intdes.gr1.AppSettings;
 
 public class SettingPane extends GridPane{
 
+    /*
+        TODO: allow EventHandlers to update colours of all VBox children (i.e. colour highlighting for selected option
+        TODO:
+    */
+
     AppSettings context = AppSettings.getInstance();
 
     public SettingPane(int prefHeight, int prefWidth) {
