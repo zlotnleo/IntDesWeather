@@ -1,24 +1,21 @@
 package uk.ac.cam.intdes.gr1.ui;
 
-import com.sun.istack.internal.Nullable;
-import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import uk.ac.cam.intdes.gr1.Consts;
 import uk.ac.cam.intdes.gr1.api.ResortWeather;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class WeatherCardRow extends BorderPane {
     private HBox cardBox;
+    private Label label;
 
-    private String title;
     private List<ResortWeather> resorts;
 
     public WeatherCardRow() {
@@ -34,6 +31,9 @@ public class WeatherCardRow extends BorderPane {
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         setCenter(sp);
 
+        //TODO: Set cardBox's background to transparent to make the mountain visible
+        cardBox.setBackground(Consts.TRANSPARENT_BACKGROUND); //Doesn't work, maybe?? due to card insets
+
         // make scroll horizontal
         sp.setOnScroll(e -> {
             if(e.getDeltaX() == 0 && e.getDeltaY() != 0) {
@@ -46,18 +46,21 @@ public class WeatherCardRow extends BorderPane {
         this();
 
         getStylesheets().add(getClass().getResource("/css/weather_card_row.css").toExternalForm());
+        setPrefHeight(Consts.WEATHERCARDROW_HEIGHT);
 
         setTitle(title);
+        setTop(label);
         setResorts(resorts);
     }
 
     public String getTitle() {
-        return title;
+        return label.getText();
     }
 
     public void setTitle(String title) {
-        this.title = title;
-        setTop(new Label(title));
+        if(label == null)
+            label = new Label();
+        label.setText(title);
     }
 
     public List<ResortWeather> getResorts() {

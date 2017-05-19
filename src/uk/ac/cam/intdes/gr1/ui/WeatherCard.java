@@ -3,15 +3,12 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import uk.ac.cam.intdes.gr1.api.ResortWeather;
 
 public class WeatherCard extends HBox {
