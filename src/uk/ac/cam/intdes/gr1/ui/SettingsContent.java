@@ -9,7 +9,6 @@ public class SettingsContent extends Content {
 
         SettingPane SPane = new SettingPane((int)this.getPrefHeight(), (int)this.getPrefWidth());
         this.getChildren().add(SPane);
-
     }
 
     public static SettingsContent getInstance(){

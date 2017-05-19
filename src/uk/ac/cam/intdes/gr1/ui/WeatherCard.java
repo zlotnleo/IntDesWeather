@@ -2,6 +2,7 @@ package uk.ac.cam.intdes.gr1.ui;
 import java.io.IOException;
 import java.util.HashMap;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import uk.ac.cam.intdes.gr1.api.ResortWeather;
 
 public class WeatherCard extends HBox {
     public void setTemperature(double temperature) {
@@ -37,7 +39,7 @@ public class WeatherCard extends HBox {
 
     public void setLocationName(String locationName) {
         this.locationName = locationName;
-        this.locationLabel.setText(locationName);
+        locationLabel.setText(locationName);
     }
 
     private String locationName;
@@ -52,7 +54,7 @@ public class WeatherCard extends HBox {
             System.out.println("could not find image");
             return;
         }
-        this.weatherIcon.setImage(img);
+        weatherIcon.setImage(img);
     }
 
     private WeatherType weatherType;
@@ -60,6 +62,7 @@ public class WeatherCard extends HBox {
     private double temperature; // celsius
 
     public WeatherCard() {
+        // TODO: might not want default constructor
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fxml/weather_card.fxml"));
         fxmlLoader.setRoot(this);
@@ -74,5 +77,14 @@ public class WeatherCard extends HBox {
         this.setOnMouseClicked(e -> {
             // TODO: need to to go to detailed vew
         });
+
+        weatherIcon.fitHeightProperty().bind(Bindings.multiply(heightProperty(), 0.8));
+        weatherIcon.setPreserveRatio(true);
+    }
+
+    public WeatherCard(ResortWeather resort) {
+        this();
+
+        setLocationName(resort.getName());
     }
 }

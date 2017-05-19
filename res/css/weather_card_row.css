@@ -1,0 +1,58 @@
+.titled-pane
+{
+    /*-fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";*/
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.titled-pane > .title
+{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em; /* 2 10 3 10 */
+}
+
+/* The main scrollbar **track** CSS class  */
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color:derive(black,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}

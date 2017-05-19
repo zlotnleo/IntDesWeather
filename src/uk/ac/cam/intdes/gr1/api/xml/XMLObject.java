@@ -1,6 +1,7 @@
 package uk.ac.cam.intdes.gr1.api.xml;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //Please don't exploit the fact that this class is entirely mutable
 public class XMLObject
@@ -8,7 +9,7 @@ public class XMLObject
 	private String name;
 	private String data;
 	
-	private ArrayList<XMLObject> children;
+	private List<XMLObject> children;
 	
 	public XMLObject(String n)
 	{
@@ -21,9 +22,9 @@ public class XMLObject
 		children.add(o);
 	}
 	
-	public ArrayList<XMLObject> getChildrenOfTag(String n)
+	public List<XMLObject> getChildrenOfTag(String n)
 	{
-		ArrayList<XMLObject> r = new ArrayList<XMLObject>();
+		List<XMLObject> r = new ArrayList<XMLObject>();
 		for (XMLObject o : children)
 		{
 			if (o.name.equals(n))
@@ -60,6 +61,11 @@ public class XMLObject
 	@Override
 	public String toString()
 	{
-		return name;
+		String app = "";
+		for (XMLObject obj : children)
+		{
+			app += "\n" + obj.toString();
+		}
+		return name + "" + app;
 	}
 }

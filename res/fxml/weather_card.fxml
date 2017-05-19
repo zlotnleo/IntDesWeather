@@ -3,18 +3,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root style="-fx-background-color: #2498b5;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-      <ImageView fx:id="weatherIcon" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../icons/sunny.png" />
-      </ImageView>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-          <Label fx:id="locationLabel" text="Label" textFill="WHITE">
-           <font>
-              <Font size="28.0" />
-           </font></Label>
-      </VBox>
+<fx:root style="-fx-background-color: #2498b5;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <BorderPane prefHeight="144.0" prefWidth="152.0">
+      <top>
+             <Label fx:id="locationLabel" text="Label" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+              <font>
+                 <Font name="System Bold" size="18.0" />
+              </font>
+         </Label>
+      </top>
+      <left>
+            <ImageView fx:id="weatherIcon" fitHeight="80" fitWidth="80" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                  <Image url="@../icons/sunny.png" />
+            </ImageView>
+      </left>
+      <center>
+         <Label fx:id="infoLabel" text="13 °C" textFill="WHITE" BorderPane.alignment="CENTER">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+      </center>
+   </BorderPane>
 </fx:root>

@@ -7,17 +7,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
 import uk.ac.cam.intdes.gr1.api.xml.IterativeXMLParser;
 import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
 
 public class API
 {
-	private static final String PROTOCOL = "http";
-	private static final String URL = "uk.ac.cam.intdes.gr1.api.worldweatheronline.com/premium/v1/ski.ashx";
-	private static final String API_KEY = "e6d4c684320349cab8b131651171105";
-	private static final String FORMAT = "xml";
+	private String baseURL;
+	
+	private static final String PROTOCOL = "https";
 
 	private Map<String, String> parameters;
+	
+	public API(String u)
+	{
+		baseURL = u;
+	}
 
 	//
 	// Set the value of any parameter currently being sent to the server
@@ -28,12 +33,6 @@ public class API
 	//
 	public void setParameter(String p, String v)
 	{
-		if (p.equals("key") || p.equals("format"))
-		{
-			System.err.println("Parameter: " + p + " can not be altered");
-			return;
-		}
-
 		parameters.put(p, v);
 	}
 
@@ -59,19 +58,24 @@ public class API
 
 		req += PROTOCOL;
 		req += "://";
-		req += URL;
-		req += "?";
-		req += "key=" + API_KEY;
+		req += baseURL;
+		
+		boolean first = true;
 
 		for (String s : parameters.keySet())
 		{
 			String p = s;
 			String v = parameters.get(s);
 
-			req += "&" + p + "=" + v;
+			if (first)
+			{
+				req += "?" + p + "=" + v;
+				first = false;
+			} else
+			{
+				req += "&" + p + "=" + v;
+			}
 		}
-
-		req += "&format=" + FORMAT;
 
 		return req;
 	}
@@ -104,7 +108,7 @@ public class API
 	{
 		String req = formRequestURL();
 		sendHTTPRequest(req);
-		
+
 		System.out.println("Sent HTTP request: " + req);
 
 		InputStreamReader isr = new InputStreamReader(currentRequestInputStream);

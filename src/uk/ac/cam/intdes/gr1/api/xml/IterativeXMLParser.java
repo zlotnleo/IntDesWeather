@@ -7,7 +7,7 @@ import java.util.Stack;
 public class IterativeXMLParser
 {
 	//I'll be honest I don't really know what I'm doing with this...
-	private static final int READ_AHEAD_LIMIT = 99999;
+	private static final int READ_AHEAD_LIMIT = 9999;
 	
 	private static BufferedReader reader;
 	
@@ -52,7 +52,9 @@ public class IterativeXMLParser
 				int i = reader.read();
 				
 				if (i == -1)
+				{
 					break;
+				}
 				
 				c = (char) i;
 				
@@ -120,10 +122,16 @@ public class IterativeXMLParser
 	{
 		String curData = "";
 		
+		int ic = 0;
 		char c = 0;
 		
-		while ((c = (char) reader.read()) != '<')
+		while ((ic = reader.read()) != '<')
 		{
+			if (ic == -1)
+				break;
+			
+			c = (char) ic;
+			
 			reader.mark(READ_AHEAD_LIMIT);
 			curData += c;
 		}
