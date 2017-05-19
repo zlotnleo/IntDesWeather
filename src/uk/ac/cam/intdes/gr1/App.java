@@ -22,7 +22,8 @@ public class App extends Application {
     private Stack<Scene> screenStack = new Stack<>();
 
     private EventHandler<MouseEvent> to_home = e -> {
-        screenStack.add(primaryStage.getScene());
+        screenStack.clear();    //No back button from home
+        screenStack.add(home);
         setScene(home);
     };
     private EventHandler<MouseEvent> to_settings = e -> {
@@ -32,6 +33,9 @@ public class App extends Application {
     private EventHandler<MouseEvent> go_back = e -> {
         if(!screenStack.empty())
             setScene(screenStack.pop());
+    };
+    private EventHandler<MouseEvent> go_location = e -> {
+        //TODO: Figure out a way to change to a specific location
     };
 
     @Override
