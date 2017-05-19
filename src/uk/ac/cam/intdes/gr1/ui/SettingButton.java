@@ -5,26 +5,55 @@ import javafx.beans.NamedArg;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import uk.ac.cam.intdes.gr1.AppSettings;
 
 
 public class SettingButton extends Pane{
+
+    AppSettings currentStatus = AppSettings.getInstance();
+
+    public SettingButton(@NamedArg("Button text") String text, @NamedArg("Event Handler") @Nullable EventHandler<?
+            super MouseEvent> onClick, int height, int width, Color backColor){
+
+        super();
+
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, onClick);
+        this.setPrefWidth(width);
+        this.setPrefHeight(height);
+        this.setColor(backColor);
+    }
 
     public SettingButton(@NamedArg("Button text") String text, @NamedArg("Event Handler") @Nullable EventHandler<?
             super MouseEvent> onClick, int height, int width){
 
         super();
-        // TODONE: Sort out these disgusting sizes.
 
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, onClick);
-        System.out.println(String.format("Width: %d, Height: %d", height,width));
         this.setPrefWidth(width);
         this.setPrefHeight(height);
-        setColor(Color.AQUA);
+    }
+
+    // VERY messy solution to allow buttons to know which setting they need to update. Should really replace
+    // with fancy dynamic handlers, but this will do for proof-of-concept (aka high-fidelity prototype.
+    public SettingButton(String buttonText, boolean tempOrDist, boolean modeToSet, int height, int width){
+        super();
+        this.setPrefWidth(width);
+        this.setPrefHeight(height);
+
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
+
+			((VBox)this.getParent()).getChildren().forEach(e -> {
+				((SettingButton)e).setColor(Color.BLACK);
+			});
+			setColor(Color.color(0.0,0.7,1.0));
+			if (tempOrDist) {
+				currentStatus.setFahrenheit(modeToSet);
+			} else {
+				currentStatus.setMiles(modeToSet);
+			}
+        });
     }
 
     public void setColor(Color c){
