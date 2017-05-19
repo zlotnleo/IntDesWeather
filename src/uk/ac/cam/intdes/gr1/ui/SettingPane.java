@@ -1,22 +1,28 @@
 package uk.ac.cam.intdes.gr1.ui;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import uk.ac.cam.intdes.gr1.AppSettings;
 
 public class SettingPane extends GridPane{
 
     /*
-        TODO: allow EventHandlers to update colours of all VBox children (i.e. colour highlighting for selected option
+        TODONE: allow EventHandlers to update colours of all VBox children (i.e. colour highlighting for selected option
+        TODO: set default colours on program load.
+        TODO: Internal border for SettingPane.
+        TODO: Fonts and colours
         TODO:
+
+        Was thinking of using Javafx Node ID to identify boxes safely but it's not being recognised for some reason.
+        Resorting to messy getParent() calls.
+
     */
 
     AppSettings context = AppSettings.getInstance();
 
+
     public SettingPane(int prefHeight, int prefWidth) {
+
         this.setGridLinesVisible(true);
         // Grid lines visible (testing purposes)
         this.setPrefWidth(prefWidth);
@@ -26,20 +32,14 @@ public class SettingPane extends GridPane{
         // c1 contains setting names, c2 contains setting values
         Label lb1 = new Label("Temperature Units:");
         Label lb2 = new Label("Distance Units:");
-        VBox TempBox = new VBox(new SettingButton("sadf", new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                SettingButton sb = (SettingButton)event.getSource();
-                sb.setColor(Color.BLACK);
-                System.out.println("Hey you clicked on a thing");
-            }
-        }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30, Color.LIGHTGRAY));
-        VBox DistBox = new VBox(new SettingButton("sadf", new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("Hey you clicked on a different thing");
-            }
-        }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30, Color.LIGHTGRAY));
+        VBox TempBox = new VBox(
+				new SettingButton("Celcius", true, false, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30),
+				new SettingButton("Fahrenheit", true, true, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30)
+			);
+        VBox DistBox = new VBox(
+        		new SettingButton("Kilometres", false, false, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30),
+				new SettingButton("Celcius", false, true, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 30)
+			);
 
         this.getColumnConstraints().addAll(c1,c2);
         addRow(0,lb1,TempBox);
