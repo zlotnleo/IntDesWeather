@@ -2,6 +2,7 @@ package uk.ac.cam.intdes.gr1.ui;
 import java.io.IOException;
 import java.util.HashMap;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +39,7 @@ public class WeatherCard extends HBox {
 
     public void setLocationName(String locationName) {
         this.locationName = locationName;
-        this.locationLabel.setText(locationName);
+        locationLabel.setText(locationName);
     }
 
     private String locationName;
@@ -53,7 +54,7 @@ public class WeatherCard extends HBox {
             System.out.println("could not find image");
             return;
         }
-        this.weatherIcon.setImage(img);
+        weatherIcon.setImage(img);
     }
 
     private WeatherType weatherType;
@@ -76,6 +77,9 @@ public class WeatherCard extends HBox {
         this.setOnMouseClicked(e -> {
             // TODO: need to to go to detailed vew
         });
+
+        weatherIcon.fitHeightProperty().bind(Bindings.multiply(heightProperty(), 0.8));
+        weatherIcon.setPreserveRatio(true);
     }
 
     public WeatherCard(ResortWeather resort) {
