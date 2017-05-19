@@ -14,9 +14,32 @@ public class GoogleAPIInterface
 	
 	private API api;
 	
-	public GoogleAPIInterface()
-	{
+	public GoogleAPIInterface() {
 		api = new API(API_URL);
+	}
+
+	public Coordinate getLocation(String searchInput) {
+		api.startNewRequest();
+
+		api.setParameter("query", String.join("+", searchInput.trim().split("\\s+")));
+		api.setParameter("key", API_KEY);
+
+		XMLObject responseObject = api.execute();
+		XMLObject response = responseObject.getChildOfTag("PlaceSearchResponse");
+
+		List<XMLObject> ress = response.getChildrenOfTag("result");
+
+		if (ress.size() == 0) {
+			//TODO: could no find. what to do?
+			return new Coordinate(0, 0);
+		}
+
+		XMLObject res = ress.get(0);
+		XMLObject loc = res.getChildOfTag("geometry").getChildOfTag("location");
+		double lat = Double.valueOf(loc.getChildOfTag("lat").getData());
+		double lng = Double.valueOf(loc.getChildOfTag("lng").getData());
+
+		return new Coordinate(lat, lng);
 	}
 	
 	public List<LocationResponseObject> getNearbySkiLocations(Coordinate loc)
@@ -26,8 +49,8 @@ public class GoogleAPIInterface
 		api.startNewRequest();
 		
 		api.setParameter("location", loc.getLattitude() + "," + loc.getLongitude()); // the alps
-		api.setParameter("radius", "100");
-		api.setParameter("query", "ski+mountain");
+//		api.setParameter("radius", "50000");
+		api.setParameter("query", "ski+resort");
 		api.setParameter("key", API_KEY);
 		
 		XMLObject responseObject = api.execute();
