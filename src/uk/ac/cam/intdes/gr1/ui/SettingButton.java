@@ -5,12 +5,8 @@ import javafx.beans.NamedArg;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.event.EventType;
 import uk.ac.cam.intdes.gr1.AppSettings;
 
 
@@ -45,12 +41,18 @@ public class SettingButton extends Pane{
         super();
         this.setPrefWidth(width);
         this.setPrefHeight(height);
-        this.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event){
-                setColor(Color.LIGHTGOLDENRODYELLOW);
-                // TODO: FILL THIS IN.
-            }
+
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
+
+			((VBox)this.getParent()).getChildren().forEach(e -> {
+				((SettingButton)e).setColor(Color.BLACK);
+			});
+			setColor(Color.color(0.0,0.7,1.0));
+			if (tempOrDist) {
+				currentStatus.setFahrenheit(modeToSet);
+			} else {
+				currentStatus.setMiles(modeToSet);
+			}
         });
     }
 
