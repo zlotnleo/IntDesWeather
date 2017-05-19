@@ -3,6 +3,7 @@ package uk.ac.cam.intdes.gr1.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.istack.internal.Nullable;
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
 import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
 import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
@@ -42,14 +43,15 @@ public class GoogleAPIInterface
 		return new Coordinate(lat, lng);
 	}
 	
-	public List<LocationResponseObject> getNearbySkiLocations(Coordinate loc)
+	public List<LocationResponseObject> getNearbySkiLocations(@Nullable Coordinate loc)
 	{
 		List<LocationResponseObject> r = new ArrayList<>();
 		
 		api.startNewRequest();
-		
-		api.setParameter("location", loc.getLattitude() + "," + loc.getLongitude()); // the alps
-//		api.setParameter("radius", "50000");
+
+		if (loc != null) {
+            api.setParameter("location", loc.getLattitude() + "," + loc.getLongitude());
+        }
 		api.setParameter("query", "ski+resort");
 		api.setParameter("key", API_KEY);
 		

@@ -16,17 +16,28 @@ public class APISystemTester
 		weatherAPI = new WeatherAPIInterface();
 		googleAPI = new GoogleAPIInterface();
 
+		try {
+            String ipString = CurrentLocationApi.getIp();
+            System.out.println("ip is: " + ipString);
+        } catch (Exception e) {
+		    System.out.println("Could not fetch ip!");
+        }
+
+		LocationResponseObject currentLoc = CurrentLocationApi.getLocation();
+		System.out.println("Current Location: " + currentLoc.toString());
+
 		Coordinate location = googleAPI.getLocation("geneva");
 		
 		//Returns a list of the nearest ski resort areas to the inputed location
 //		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(47.376068,8.536694));
-		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.210808,0.091348));
+//		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.210808,0.091348));
+//        List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(null);
+//
+//		for (LocationResponseObject l : resp)
+//		{
+//			System.out.println(l);
+//		}
 
-		for (LocationResponseObject l : resp)
-		{
-			System.out.println(l);
-		}
-		
 //		WeekWeatherResponseObject w = weatherAPI.getWeatherReportAt(new Coordinate(56.34,-56.23));
 		
 		//Each weekly weather report has 7 daily reports in it (indexed 0 - 6)
