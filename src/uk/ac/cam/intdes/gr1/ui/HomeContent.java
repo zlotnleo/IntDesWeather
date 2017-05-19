@@ -22,6 +22,8 @@ public class HomeContent extends Content {
         resorts.add(new ResortWeather("Lake Tahoa"));
         resorts.add(new ResortWeather("Zel am See"));
         resorts.add(new ResortWeather("Prahova"));
+        resorts.add(new ResortWeather("Val Thorens"));
+
 
         double height = getPrefHeight();
         TextField searchBar = new TextField();
