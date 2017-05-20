@@ -27,7 +27,7 @@ public class WeatherAPIInterface
 	{
 		WeekWeatherResponseObject r = null;
 		
-		double lat = c.getLattitude();
+		double lat = c.getLatitude();
 		double lon = c.getLongitude();
 		
 		api.startNewRequest();

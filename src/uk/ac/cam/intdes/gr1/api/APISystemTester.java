@@ -13,29 +13,33 @@ public class APISystemTester
 	
 	public static void main(String args[])
 	{
-		weatherAPI = new WeatherAPIInterface();
-		googleAPI = new GoogleAPIInterface();
+        SkiMapApi skiApi = SkiMapApi.getInstance();
 
-		try {
-            String ipString = CurrentLocationApi.getIp();
-            System.out.println("ip is: " + ipString);
-        } catch (Exception e) {
-		    System.out.println("Could not fetch ip!");
-        }
-
-		LocationResponseObject currentLoc = CurrentLocationApi.getLocation();
-		System.out.println("Current Location: " + currentLoc.toString());
-
-		Coordinate location = googleAPI.getLocation("geneva");
-		
-		//Returns a list of the nearest ski resort areas to the inputed location
-//		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(47.376068,8.536694));
-//		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.210808,0.091348));
-//        List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(null);
+//		weatherAPI = new WeatherAPIInterface();
+//		googleAPI = new GoogleAPIInterface();
 //
+//		try {
+//            String ipString = CurrentLocationApi.getIp();
+//            System.out.println("ip is: " + ipString);
+//        } catch (Exception e) {
+//		    System.out.println("Could not fetch ip!");
+//        }
+//
+//		LocationResponseObject currentLoc = CurrentLocationApi.getLocation();
+//		System.out.println("Current Location: " + currentLoc.toString());
+//
+//        List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(currentLoc.getCoordinate());
+//
+//		//Returns a list of the nearest ski resort areas to the inputed location
+////		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(47.376068,8.536694));
+////		List<LocationResponseObject> resp = googleAPI.getNearbySkiLocations(new Coordinate(52.210808,0.091348));
+//
+////
 //		for (LocationResponseObject l : resp)
 //		{
 //			System.out.println(l);
+////            WeekWeatherResponseObject w = weatherAPI.getWeatherReportAt(l.getCoordinate());
+////            w.
 //		}
 
 //		WeekWeatherResponseObject w = weatherAPI.getWeatherReportAt(new Coordinate(56.34,-56.23));

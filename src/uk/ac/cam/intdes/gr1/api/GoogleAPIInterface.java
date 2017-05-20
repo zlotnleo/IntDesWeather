@@ -50,7 +50,7 @@ public class GoogleAPIInterface
 		api.startNewRequest();
 
 		if (loc != null) {
-            api.setParameter("location", loc.getLattitude() + "," + loc.getLongitude());
+            api.setParameter("location", loc.getLatitude() + "," + loc.getLongitude());
         }
 		api.setParameter("query", "ski+resort");
 		api.setParameter("key", API_KEY);
