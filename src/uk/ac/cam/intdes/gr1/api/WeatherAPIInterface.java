@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
-import uk.ac.cam.intdes.gr1.api.responseobjs.DailyWeatherResponseObject;
-import uk.ac.cam.intdes.gr1.api.responseobjs.HourlyWeatherResponseObject;
+import uk.ac.cam.intdes.gr1.api.responseobjs.WeatherReport;
+import uk.ac.cam.intdes.gr1.api.responseobjs.HourlyWeatherReport;
 import uk.ac.cam.intdes.gr1.api.responseobjs.TopMidBottomMaxMinResponseObject;
 import uk.ac.cam.intdes.gr1.api.responseobjs.TopMidBottomWeatherResponseObject;
-import uk.ac.cam.intdes.gr1.api.responseobjs.WeekWeatherResponseObject;
 import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
 
 public class WeatherAPIInterface
@@ -17,17 +16,22 @@ public class WeatherAPIInterface
 	private static final String API_KEY = "e6d4c684320349cab8b131651171105";
 	
 	private API api;
+	private static WeatherAPIInterface instance;
 	
-	public WeatherAPIInterface()
+	private WeatherAPIInterface()
 	{
 		api = new API(API_URL);
 	}
+	public static WeatherAPIInterface getInstance() {
+		if (instance == null) {
+		    instance = new WeatherAPIInterface();
+        }
+        return instance;
+	}
 	
-	public WeekWeatherResponseObject getWeatherReportAt(Coordinate c)
+	public List<WeatherReport> getWeatherReportAt(Coordinate c)
 	{
-		WeekWeatherResponseObject r = null;
-		
-		double lat = c.getLattitude();
+		double lat = c.getLatitude();
 		double lon = c.getLongitude();
 		
 		api.startNewRequest();
@@ -42,7 +46,7 @@ public class WeatherAPIInterface
 		
 		List<XMLObject> weathers = data.getChildrenOfTag("weather");
 		
-		List<DailyWeatherResponseObject> dailies = new ArrayList<>();
+		List<WeatherReport> dailies = new ArrayList<>();
 		
 		for (XMLObject w : weathers)
 		{
@@ -77,7 +81,7 @@ public class WeatherAPIInterface
 
 			TopMidBottomMaxMinResponseObject bot = new TopMidBottomMaxMinResponseObject(bMaxTempC, bMaxTempF, bMinTempC, bMinTempF);
 			
-			List<HourlyWeatherResponseObject> hourlies = new ArrayList<>();
+			List<HourlyWeatherReport> hourlies = new ArrayList<>();
 			
 			List<XMLObject> hourlyTags = w.getChildrenOfTag("hourly");
 			
@@ -138,18 +142,16 @@ public class WeatherAPIInterface
 				int dChanceOfSnow = Integer.parseInt(o.getChildOfTag("chanceofsnow").getData());
 				int chanceOfThunder = Integer.parseInt(o.getChildOfTag("chanceofthunder").getData());
 				
-				HourlyWeatherResponseObject h = new HourlyWeatherResponseObject(time, snowfall, freezeLevel, precip, humidity, visibility, pressure, cloudCover, chanceOfRain, chanceOfRemDry, chanceOfWindy, chanceOfOvercast, chanceOfSunshine, chanceOfFrost, chanceOfHighTemp, chanceOfFog, dChanceOfSnow, chanceOfThunder, iTop, iMid, iBot);
+				HourlyWeatherReport h = new HourlyWeatherReport(time, snowfall, freezeLevel, precip, humidity, visibility, pressure, cloudCover, chanceOfRain, chanceOfRemDry, chanceOfWindy, chanceOfOvercast, chanceOfSunshine, chanceOfFrost, chanceOfHighTemp, chanceOfFog, dChanceOfSnow, chanceOfThunder, iTop, iMid, iBot);
 				
 				hourlies.add(h);
 			}
 
-			DailyWeatherResponseObject daily = new DailyWeatherResponseObject(date, chanceOfSnow, totalSnowfall, top, mid, bot, hourlies);
+			WeatherReport daily = new WeatherReport(date, chanceOfSnow, totalSnowfall, top, mid, bot, hourlies);
 			
 			dailies.add(daily);
 		}
 		
-		r = new WeekWeatherResponseObject(dailies);
-		
-		return r;
+		return dailies;
 	}
 }

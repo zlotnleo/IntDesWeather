@@ -3,9 +3,8 @@ package uk.ac.cam.intdes.gr1;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import uk.ac.cam.intdes.gr1.ui.*;
@@ -23,7 +22,8 @@ public class App extends Application {
     private Stack<Scene> screenStack = new Stack<>();
 
     private EventHandler<MouseEvent> to_home = e -> {
-        screenStack.add(primaryStage.getScene());
+        screenStack.clear();    //No back button from home
+        screenStack.add(home);
         setScene(home);
     };
     private EventHandler<MouseEvent> to_settings = e -> {
@@ -34,33 +34,40 @@ public class App extends Application {
         if(!screenStack.empty())
             setScene(screenStack.pop());
     };
+    private EventHandler<MouseEvent> go_location = e -> {
+        //TODO: Figure out a way to change to a specific location
+    };
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         this.primaryStage = primaryStage;
 
-        BackButton backButtonFromSettings = new BackButton();
-        backButtonFromSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, go_back);
-        settings = MainFrame.createScene(
-                new TopPanel(
-                        backButtonFromSettings,
-                        "Settings",
-                        null
-                ),
-                SettingsContent.getInstance()
-        );
-
+        Label appTitleLabel = new Label("Weather To Ski");
+        appTitleLabel.getStyleClass().add("title");
+        appTitleLabel.getStylesheets().add(getClass().getResource("/css/title.css").toExternalForm());
 
         SettingsButton settingsButtonFromHome = new SettingsButton();
         settingsButtonFromHome.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
         home = MainFrame.createScene(
                 new TopPanel(
                         null,
-                        "WTS",
+                        appTitleLabel,
                         settingsButtonFromHome
                 ),
                 HomeContent.getInstance()
+        );
+        String homeCss = getClass().getResource("/css/home.css").toExternalForm();
+        home.getStylesheets().add(homeCss);
+
+        BackButton backButtonFromSettings = new BackButton();
+        backButtonFromSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, go_back);
+        settings = MainFrame.createScene(
+                new TopPanel(
+                        backButtonFromSettings,
+                        new Label("Settings"),
+                        null
+                ),
+                SettingsContent.getInstance()
         );
 
         BackButton backButtonFromLocation = new BackButton();
@@ -70,7 +77,7 @@ public class App extends Application {
         locationWeather = MainFrame.createScene(
                 new TopPanel(
                         backButtonFromLocation,
-                        "Location name HERE!",
+                        new Label("Location name HERE!"),
                         settingsButtonFromLocation
                 ),
                 LocationWeatherContent.getInstance()

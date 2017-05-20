@@ -1,19 +1,12 @@
-.titled-pane
-{
-    /*-fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";*/
+.card-row {
     -fx-background-color: transparent;
-    -fx-text-fill: -fx-text-base-color;
 }
 
-.titled-pane > .title
-{
+.card-row > .viewport {
     -fx-background-color: transparent;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em; /* 2 10 3 10 */
 }
 
-/* The main scrollbar **track** CSS class  */
+ /*The main scrollbar **track** CSS class*/
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
     -fx-background-color:transparent;
