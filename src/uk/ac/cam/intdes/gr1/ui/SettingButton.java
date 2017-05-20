@@ -15,14 +15,14 @@ public class SettingButton extends Pane{
     AppSettings currentStatus = AppSettings.getInstance();
 
     public SettingButton(@NamedArg("Button text") String text, @NamedArg("Event Handler") @Nullable EventHandler<?
-            super MouseEvent> onClick, int height, int width, Color backColor){
+            super MouseEvent> onClick, int height, int width, Color startColor){
 
         super();
 
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, onClick);
         this.setPrefWidth(width);
         this.setPrefHeight(height);
-        this.setColor(backColor);
+        this.setColor(startColor);
     }
 
     public SettingButton(@NamedArg("Button text") String text, @NamedArg("Event Handler") @Nullable EventHandler<?
