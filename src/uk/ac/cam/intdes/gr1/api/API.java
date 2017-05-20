@@ -118,4 +118,17 @@ public class API
 
 		return IterativeXMLParser.parse();
 	}
+
+	public XMLObject manualExecute(String req) {
+		sendHTTPRequest(req);
+
+		System.out.println("Sent HTTP request: " + req);
+
+		InputStreamReader isr = new InputStreamReader(currentRequestInputStream);
+		BufferedReader br = new BufferedReader(isr);
+
+		IterativeXMLParser.registerReader(br);
+
+		return IterativeXMLParser.parse();
+	}
 }
