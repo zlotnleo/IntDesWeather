@@ -17,10 +17,17 @@ public class WeatherAPIInterface
 	private static final String API_KEY = "e6d4c684320349cab8b131651171105";
 	
 	private API api;
+	private static WeatherAPIInterface instance;
 	
-	public WeatherAPIInterface()
+	private WeatherAPIInterface()
 	{
 		api = new API(API_URL);
+	}
+	public static WeatherAPIInterface getInstance() {
+		if (instance == null) {
+		    instance = new WeatherAPIInterface();
+        }
+        return instance;
 	}
 	
 	public WeekWeatherResponseObject getWeatherReportAt(Coordinate c)

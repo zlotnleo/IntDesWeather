@@ -16,10 +16,32 @@ import java.net.URL;
 
 
 public class CurrentLocationApi {
+    private static CurrentLocationApi instance;
+
+    private static DatabaseReader dbReader;
+
+    private CurrentLocationApi() {
+        try {
+            URL filepath = CurrentLocationApi.class.getResource("/GeoLite2-City.mmdb");
+            File locationDb = new File(filepath.getFile());
+            // BUG: will fail if the pathname to db has spaces in it
+            dbReader = new DatabaseReader.Builder(locationDb).build();
+        } catch (Exception e) {
+            dbReader = null;
+        }
+    }
+
+    public static CurrentLocationApi getInstance() {
+        if (instance == null) {
+            instance = new CurrentLocationApi();
+        }
+        return instance;
+    }
+
     /*
         code from: http://stackoverflow.com/questions/2939218/getting-the-external-ip-address-in-java
      */
-    public static String getIp() throws Exception {
+    public String getIp() throws Exception {
         URL whatismyip = new URL("http://checkip.amazonaws.com");
         BufferedReader in = null;
         try {
@@ -38,19 +60,7 @@ public class CurrentLocationApi {
         }
     }
 
-    private static DatabaseReader dbReader;
-    static {
-        try {
-            URL filepath = CurrentLocationApi.class.getResource("/GeoLite2-City.mmdb");
-            File locationDb = new File(filepath.getFile());
-            // BUG: will fail if the pathname to db has spaces in it
-            dbReader = new DatabaseReader.Builder(locationDb).build();
-        } catch (Exception e) {
-            dbReader = null;
-        }
-    }
-
-    public static LocationResponseObject getLocation() {
+    public LocationResponseObject getLocation() {
         // A File object pointing to your GeoIP2 or GeoLite2 database
         try {
             String ipString = getIp();

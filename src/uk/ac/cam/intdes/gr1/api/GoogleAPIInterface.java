@@ -14,9 +14,17 @@ public class GoogleAPIInterface
 	private static final String API_KEY = "AIzaSyCuZmZka615kDgM7P-3d429nlfnZkl6x0w";
 	
 	private API api;
-	
-	public GoogleAPIInterface() {
+	private static GoogleAPIInterface instance;
+
+	private GoogleAPIInterface() {
 		api = new API(API_URL);
+	}
+
+	public static GoogleAPIInterface getInstance() {
+		if (instance == null) {
+			instance = new GoogleAPIInterface();
+		}
+		return instance;
 	}
 
 	public Coordinate getLocation(String searchInput) {
