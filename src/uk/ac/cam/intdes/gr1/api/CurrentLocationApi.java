@@ -4,7 +4,6 @@ import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.model.CityResponse;
 import com.maxmind.geoip2.record.City;
 import com.maxmind.geoip2.record.Location;
-import com.maxmind.geoip2.record.Postal;
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
 import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
 

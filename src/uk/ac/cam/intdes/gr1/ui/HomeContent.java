@@ -1,5 +1,7 @@
 package uk.ac.cam.intdes.gr1.ui;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -26,26 +28,24 @@ public class HomeContent extends Content {
         searchBar.setPrefHeight(Consts.SEARCHBAR_HEIGHT);
         VBox.setMargin(searchBar, new Insets(5, 5, 5, 5));
 
-//        double rowsHeight = Consts.CONTENT_HEIGHT - searchBar.getPrefHeight();
+        double rowsHeight = Consts.CONTENT_HEIGHT - searchBar.getPrefHeight();
         VBox rows = new VBox();
         rows.setFillWidth(true);
         rows.setSpacing(0);
 
         // there is a bug that introduces spacing between hboxes here, thus we subtract 40
-        // TODO: try to fix
-        //height is set in WeatherCardRow constructor, this is unnecessary
-//        DoubleBinding rowHeightBinding =
-//                Bindings.divide(Bindings.subtract(Bindings.subtract(
-//                        heightProperty(), searchBar.heightProperty()), 40.0), 3.0);
+        DoubleBinding rowHeightBinding =
+                Bindings.divide(Bindings.subtract(
+                        heightProperty(), searchBar.getPrefHeight()), 3.0);
 
         WeatherCardRow nearby = new WeatherCardRow("Nearby", resorts);
-//        nearby.prefHeightProperty().bind(rowHeightBinding);
+        nearby.prefHeightProperty().bind(rowHeightBinding);
 
         WeatherCardRow recent = new WeatherCardRow("Recent", resorts);
-//        recent.prefHeightProperty().bind(rowHeightBinding);
+        recent.prefHeightProperty().bind(rowHeightBinding);
 
         WeatherCardRow suggested = new WeatherCardRow("Suggested", resorts);
-//        suggested.prefHeightProperty().bind(rowHeightBinding);
+        suggested.prefHeightProperty().bind(rowHeightBinding);
 
         rows.getChildren().addAll(searchBar, nearby, recent, suggested);
 

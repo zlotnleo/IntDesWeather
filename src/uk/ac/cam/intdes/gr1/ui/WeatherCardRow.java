@@ -26,7 +26,8 @@ public class WeatherCardRow extends BorderPane {
         cardBox.setAlignment(Pos.CENTER_LEFT);
 
         sp.setContent(cardBox);
-        sp.setFitToHeight(true);
+//        sp.setFitToHeight(true);
+        sp.setPrefWidth(Consts.SCREEN_WIDTH);
         sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         setCenter(sp);
@@ -46,7 +47,7 @@ public class WeatherCardRow extends BorderPane {
         this();
 
         getStylesheets().add(getClass().getResource("/css/weather_card_row.css").toExternalForm());
-        setPrefHeight(Consts.WEATHERCARDROW_HEIGHT);
+//        setPrefHeight(Consts.WEATHERCARDROW_HEIGHT);
 
         setTitle(title);
         setTop(label);
