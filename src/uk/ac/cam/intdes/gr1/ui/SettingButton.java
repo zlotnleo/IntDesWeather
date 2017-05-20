@@ -4,18 +4,24 @@ import com.sun.istack.internal.Nullable;
 import javafx.beans.NamedArg;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
+
+import javax.swing.*;
 
 
-public class SettingButton extends Pane{
+public class SettingButton extends StackPane{
 
     public SettingButton(@NamedArg("Button text") String text, @NamedArg("Event Handler") @Nullable EventHandler<?
             super MouseEvent> onClick, int height, int width, Color startColor){
-
         super();
-
+        Label lbl = new Label(text);
+        this.getChildren().add(lbl);
+        this.setAlignment(lbl, Pos.CENTER);
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, onClick);
         this.setPrefWidth(width);
         this.setPrefHeight(height);

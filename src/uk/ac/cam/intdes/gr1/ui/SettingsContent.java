@@ -1,10 +1,12 @@
 package uk.ac.cam.intdes.gr1.ui;
+
 import java.io.*;
-import java.nio.file.Path;
 
 public class SettingsContent extends Content {
 
 	// TODO: save settings on app close.
+	// TODO: actually make this look anything like the rest of the app.
+	// TODO: HUGE visual difference between settings and other parts. My bad ¯\_(ツ)_/¯
 
     private static SettingsContent instance = new SettingsContent();
 
@@ -23,7 +25,8 @@ public class SettingsContent extends Content {
 			System.out.println("ReadLine failed.");
 		}
 
-        SettingPane SPane = new SettingPane((int)this.getPrefHeight(), (int)this.getPrefWidth(), tempMode, distMode);
+		SettingPane SPane = new SettingPane((int)this.getPrefHeight(), (int)this.getPrefWidth(),
+				tempMode, distMode);
         this.getChildren().add(SPane);
     }
 
