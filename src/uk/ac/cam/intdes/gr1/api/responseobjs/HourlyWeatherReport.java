@@ -1,6 +1,6 @@
 package uk.ac.cam.intdes.gr1.api.responseobjs;
 
-public class HourlyWeatherResponseObject
+public class HourlyWeatherReport
 {
 	private int time; //HHMM
 	
@@ -26,10 +26,10 @@ public class HourlyWeatherResponseObject
 	private TopMidBottomWeatherResponseObject mid;
 	private TopMidBottomWeatherResponseObject bottom;
 	
-	public HourlyWeatherResponseObject(int time, double snowfall, int freezeLevel, double precip, int humidity, int visibility, int pressure, 
-			int cloudCover, int chanceOfRain, int chanceOfRemDry, int chanceOfWindy, int chanceOfOvercast, int chanceOfSunshine, int chanceOfFrost, 
-			int chanceOfHighTemp, int chanceOfFog, int chanceOfSnow, int chanceOfThunder, TopMidBottomWeatherResponseObject top, TopMidBottomWeatherResponseObject mid,
-			TopMidBottomWeatherResponseObject bottom)
+	public HourlyWeatherReport(int time, double snowfall, int freezeLevel, double precip, int humidity, int visibility, int pressure,
+							   int cloudCover, int chanceOfRain, int chanceOfRemDry, int chanceOfWindy, int chanceOfOvercast, int chanceOfSunshine, int chanceOfFrost,
+							   int chanceOfHighTemp, int chanceOfFog, int chanceOfSnow, int chanceOfThunder, TopMidBottomWeatherResponseObject top, TopMidBottomWeatherResponseObject mid,
+							   TopMidBottomWeatherResponseObject bottom)
 	{
 		this.time = time;
 		this.snowfall = snowfall;

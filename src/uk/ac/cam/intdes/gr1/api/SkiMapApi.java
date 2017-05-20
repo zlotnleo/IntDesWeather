@@ -1,20 +1,15 @@
 package uk.ac.cam.intdes.gr1.api;
 
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
-import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
-import uk.ac.cam.intdes.gr1.api.xml.IterativeXMLParser;
-import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
+import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
-import java.io.*;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -24,7 +19,7 @@ public class SkiMapApi {
 
     private API api;
 
-    private List<LocationResponseObject> resorts = new ArrayList<>();
+    private List<ResortWeather> resorts = new ArrayList<>();
 
     private SkiMapApi() {
         api = new API(API_URL);
@@ -59,7 +54,7 @@ public class SkiMapApi {
                     }
                     String name = nameBuilder.substring(1, nameBuilder.length() - 1);
 
-                    resorts.add(new LocationResponseObject(name, new Coordinate(lat, lng)));
+                    resorts.add(new ResortWeather(name, new Coordinate(lat, lng)));
                 });
             }
         } catch (Exception e) {
@@ -68,7 +63,28 @@ public class SkiMapApi {
         }
     }
 
-    public List<LocationResponseObject> getResorts() {
+    /**
+     * Search resorts around location. Return them sorted by distance in km
+     * @param location Location around which to search
+     * @param maxDist set maximum distance
+     */
+    public List<ResortWeather> searchResorts(Coordinate location, double maxDist) {
+        return sortResortsByDistance(location, resorts.stream().filter(resort ->
+                Coordinate.getDistanceInKm(location, resort.getCoordinate()) <= maxDist
+        ).collect(Collectors.toList()));
+    }
+
+    public List<ResortWeather> searchResorts(Coordinate location) {
+        return sortResortsByDistance(location, resorts);
+    }
+
+    private List<ResortWeather> sortResortsByDistance(Coordinate location, List<ResortWeather> resortList) {
+        List<ResortWeather> sorted = new ArrayList<>(resortList);
+        sorted.sort(Comparator.comparingDouble(resort -> Coordinate.getDistanceInKm(resort.getCoordinate(), location)));
+        return sorted;
+    }
+
+    public List<ResortWeather> getResorts() {
         return resorts;
     }
 }

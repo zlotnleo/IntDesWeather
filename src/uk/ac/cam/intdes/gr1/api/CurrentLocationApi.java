@@ -5,7 +5,7 @@ import com.maxmind.geoip2.model.CityResponse;
 import com.maxmind.geoip2.record.City;
 import com.maxmind.geoip2.record.Location;
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
-import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
+import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -60,22 +60,19 @@ public class CurrentLocationApi {
         }
     }
 
-    public LocationResponseObject getLocation() {
-        // A File object pointing to your GeoIP2 or GeoLite2 database
+    public Coordinate getLocation() {
         try {
             String ipString = getIp();
             InetAddress ipAddress = InetAddress.getByName(ipString);
 
-            // Replace "city" with the appropriate method for your database, e.g.,
-            // "country".
             CityResponse response = dbReader.city(ipAddress);
 
             City city = response.getCity();
             Location location = response.getLocation();
 
-            return new LocationResponseObject(city.getName(), new Coordinate(location.getLatitude(), location.getLongitude()));
+            return new Coordinate(location.getLatitude(), location.getLongitude());
         } catch (Exception e) {
-            return new LocationResponseObject("Cambridge", new Coordinate(52.210808,0.091348));
+            return new Coordinate(52.210808,0.091348); // Cambridge CL
         }
     }
 }

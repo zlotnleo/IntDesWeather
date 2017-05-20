@@ -1,9 +1,8 @@
 package uk.ac.cam.intdes.gr1.api.responseobjs;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class DailyWeatherResponseObject
+public class WeatherReport
 {
 	private String date;
 	private int chanceOfSnow;
@@ -13,9 +12,9 @@ public class DailyWeatherResponseObject
 	private TopMidBottomMaxMinResponseObject mid;
 	private TopMidBottomMaxMinResponseObject bottom;
 	
-	private List<HourlyWeatherResponseObject> hws;
+	private List<HourlyWeatherReport> hws;
 	
-	public DailyWeatherResponseObject(String date, int chanceOfSnow, double totalSnowfall, TopMidBottomMaxMinResponseObject top, TopMidBottomMaxMinResponseObject mid, TopMidBottomMaxMinResponseObject bottom, List<HourlyWeatherResponseObject> hs)
+	public WeatherReport(String date, int chanceOfSnow, double totalSnowfall, TopMidBottomMaxMinResponseObject top, TopMidBottomMaxMinResponseObject mid, TopMidBottomMaxMinResponseObject bottom, List<HourlyWeatherReport> hs)
 	{
 		this.date = date;
 		this.chanceOfSnow = chanceOfSnow;
@@ -56,7 +55,7 @@ public class DailyWeatherResponseObject
 		return bottom;
 	}
 	
-	public List<HourlyWeatherResponseObject> getHourlyReports()
+	public List<HourlyWeatherReport> getHourlyReports()
 	{
 		return hws;
 	}

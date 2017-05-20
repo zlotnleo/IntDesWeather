@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import uk.ac.cam.intdes.gr1.api.ResortWeather;
+import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 public class WeatherCard extends HBox {
     public void setTemperature(double temperature) {

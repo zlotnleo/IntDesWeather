@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.sun.istack.internal.Nullable;
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
-import uk.ac.cam.intdes.gr1.api.responseobjs.LocationResponseObject;
+import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 import uk.ac.cam.intdes.gr1.api.xml.XMLObject;
 
 public class GoogleAPIInterface
@@ -51,9 +51,9 @@ public class GoogleAPIInterface
 		return new Coordinate(lat, lng);
 	}
 	
-	public List<LocationResponseObject> getNearbySkiLocations(@Nullable Coordinate loc)
+	public List<ResortWeather> getNearbySkiLocations(@Nullable Coordinate loc)
 	{
-		List<LocationResponseObject> r = new ArrayList<>();
+		List<ResortWeather> r = new ArrayList<>();
 		
 		api.startNewRequest();
 
@@ -80,7 +80,7 @@ public class GoogleAPIInterface
 			
 			Coordinate c = new Coordinate(lat, lon);
 			
-			LocationResponseObject obj = new LocationResponseObject(name, c);
+			ResortWeather obj = new ResortWeather(name, c);
 			
 			r.add(obj);
 		}

@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import uk.ac.cam.intdes.gr1.api.ResortWeather;
+import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 import java.util.List;
 
@@ -69,6 +69,8 @@ public class WeatherCardRow extends BorderPane {
 
     public void setResorts(List<ResortWeather> resorts) {
         this.resorts = resorts;
+
+        cardBox.getChildren().clear();
 
         for (ResortWeather resort : resorts) {
             WeatherCard card = new WeatherCard(resort);

@@ -2,18 +2,16 @@ package uk.ac.cam.intdes.gr1.ui;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
-import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import uk.ac.cam.intdes.gr1.Consts;
+import uk.ac.cam.intdes.gr1.api.CurrentLocationApi;
 import uk.ac.cam.intdes.gr1.api.GoogleAPIInterface;
-import uk.ac.cam.intdes.gr1.api.ResortWeather;
+import uk.ac.cam.intdes.gr1.api.SkiMapApi;
+import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
+import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
-import javax.swing.event.HyperlinkEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,15 +30,14 @@ public class HomeContent extends Content {
         super();
 
         List<ResortWeather> resorts = new ArrayList<>();
-        resorts.add(new ResortWeather("Lake Tahoa"));
-        resorts.add(new ResortWeather("Zel am See"));
-        resorts.add(new ResortWeather("Prahova"));
-        resorts.add(new ResortWeather("Val Thorens"));
+        resorts.add(new ResortWeather("Lake Tahoa", new Coordinate(49.315355179835, -114.42647097722)));
+        resorts.add(new ResortWeather("Zel am See", new Coordinate(50.3385584502358, -115.826282501221)));
+        resorts.add(new ResortWeather("Prahova", new Coordinate(53.4842024615732, -113.556683063507)));
+        resorts.add(new ResortWeather("Val Thorens", new Coordinate(50.442417862094, -116.22459981596)));
 
         searchBar = new TextField();
         searchBar.setPrefHeight(Consts.SEARCHBAR_HEIGHT);
         searchBar.setPromptText("Search");
-        oldSearchTerm = searchBar.getText();
         searchBar.setOnAction(e -> executeSearch(searchBar.getText()));
 
         VBox.setMargin(searchBar, new Insets(5, 5, 5, 5));
@@ -48,7 +45,6 @@ public class HomeContent extends Content {
         VBox rows = new VBox();
         rows.setFillWidth(true);
         rows.setPrefWidth(getPrefWidth());
-
 
         // subtract 20 for the margins and a bit of space
         DoubleBinding rowHeightBinding =
@@ -67,6 +63,8 @@ public class HomeContent extends Content {
         rows.getChildren().addAll(searchBar, nearbyRow, recentRow, suggestedRow);
 
         this.getChildren().add(rows);
+
+        executeSearch("");
     }
 
     private void executeSearch(String searchTerm) {
@@ -74,6 +72,18 @@ public class HomeContent extends Content {
             return;
         }
         oldSearchTerm = searchTerm;
+
+        Coordinate searchLocation;
+        if (searchTerm.isEmpty()) {
+            searchLocation = CurrentLocationApi.getInstance().getLocation();
+        } else {
+            searchLocation = GoogleAPIInterface.getInstance().getLocation(searchTerm);
+        }
+
+        List<ResortWeather> resorts = SkiMapApi.getInstance().searchResorts(searchLocation, Consts.MAX_SEARCH_DIST);
+        resorts.subList(Math.min(Consts.MAX_ROW_CARDS, resorts.size()), resorts.size()).clear(); // eliminate extra resorts
+
+        nearbyRow.setResorts(resorts);
     }
 
     public static HomeContent getInstance(){
