@@ -17,5 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="com.maxmind.geoip2:geoip2:2.9.0" level="project" />
   </component>
 </module>

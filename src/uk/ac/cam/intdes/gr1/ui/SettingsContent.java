@@ -1,5 +1,6 @@
 package uk.ac.cam.intdes.gr1.ui;
 import java.io.*;
+import java.nio.file.Path;
 
 public class SettingsContent extends Content {
 
@@ -11,7 +12,7 @@ public class SettingsContent extends Content {
         super();
 		boolean tempMode = false, distMode = false;
         try{
-			BufferedReader bfr = new BufferedReader(new FileReader("settings.txt"));
+			BufferedReader bfr = new BufferedReader(new FileReader(new File("res/settings/settings.txt")));
 			tempMode = Boolean.parseBoolean(bfr.readLine());
 			distMode = Boolean.parseBoolean(bfr.readLine());
 		}
