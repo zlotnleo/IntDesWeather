@@ -13,8 +13,7 @@ public class APISystemTester
 	
 	public static void main(String args[])
 	{
-        SkiMapApi skiApi = new SkiMapApi();
-        skiApi.create_db();
+        SkiMapApi skiApi = SkiMapApi.getInstance();
 
 //		weatherAPI = new WeatherAPIInterface();
 //		googleAPI = new GoogleAPIInterface();
