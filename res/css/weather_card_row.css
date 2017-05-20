@@ -1,5 +1,12 @@
+.card-row {
+    -fx-background-color: transparent;
+}
 
-/* The main scrollbar **track** CSS class  */
+.card-row > .viewport {
+    -fx-background-color: transparent;
+}
+
+ /*The main scrollbar **track** CSS class*/
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
     -fx-background-color:transparent;

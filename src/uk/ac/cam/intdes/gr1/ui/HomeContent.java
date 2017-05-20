@@ -26,17 +26,18 @@ public class HomeContent extends Content {
 
         TextField searchBar = new TextField();
         searchBar.setPrefHeight(Consts.SEARCHBAR_HEIGHT);
+
         VBox.setMargin(searchBar, new Insets(5, 5, 5, 5));
 
-        double rowsHeight = Consts.CONTENT_HEIGHT - searchBar.getPrefHeight();
         VBox rows = new VBox();
         rows.setFillWidth(true);
-        rows.setSpacing(0);
+        rows.setPrefWidth(getPrefWidth());
 
-        // there is a bug that introduces spacing between hboxes here, thus we subtract 40
+
+        // subtract 20 for the margins and a bit of space
         DoubleBinding rowHeightBinding =
                 Bindings.divide(Bindings.subtract(
-                        heightProperty(), searchBar.getPrefHeight()), 3.0);
+                        heightProperty(), searchBar.getPrefHeight() + 20.0), 3.0);
 
         WeatherCardRow nearby = new WeatherCardRow("Nearby", resorts);
         nearby.prefHeightProperty().bind(rowHeightBinding);

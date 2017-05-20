@@ -7,33 +7,32 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import uk.ac.cam.intdes.gr1.Consts;
 import uk.ac.cam.intdes.gr1.api.ResortWeather;
 
 import java.util.List;
 
 public class WeatherCardRow extends BorderPane {
     private HBox cardBox;
-    private Label label;
+    private Label titleLabel;
 
     private List<ResortWeather> resorts;
 
     public WeatherCardRow() {
         super();
 
+        getStyleClass().addAll("card-row", "border-pane");
+
         ScrollPane sp = new ScrollPane();
         cardBox = new HBox();
         cardBox.setAlignment(Pos.CENTER_LEFT);
+        sp.getStyleClass().addAll("card-row", "hbox");
 
         sp.setContent(cardBox);
-//        sp.setFitToHeight(true);
-        sp.setPrefWidth(Consts.SCREEN_WIDTH);
+        sp.setFitToHeight(true);
         sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         setCenter(sp);
-
-        //TODO: Set cardBox's background to transparent to make the mountain visible
-        cardBox.setBackground(Consts.TRANSPARENT_BACKGROUND); //Doesn't work, maybe?? due to card insets
+        cardBox.getStyleClass().addAll("card-row", "scroll-pane");
 
         // make scroll horizontal
         sp.setOnScroll(e -> {
@@ -47,21 +46,21 @@ public class WeatherCardRow extends BorderPane {
         this();
 
         getStylesheets().add(getClass().getResource("/css/weather_card_row.css").toExternalForm());
-//        setPrefHeight(Consts.WEATHERCARDROW_HEIGHT);
 
         setTitle(title);
-        setTop(label);
+        setTop(titleLabel);
         setResorts(resorts);
     }
 
     public String getTitle() {
-        return label.getText();
+        return titleLabel.getText();
     }
 
     public void setTitle(String title) {
-        if(label == null)
-            label = new Label();
-        label.setText(title);
+        if (titleLabel == null) {
+            titleLabel = new Label();
+        }
+        titleLabel.setText(title);
     }
 
     public List<ResortWeather> getResorts() {
