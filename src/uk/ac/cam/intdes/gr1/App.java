@@ -36,6 +36,7 @@ public class App extends Application {
     };
     private EventHandler<MouseEvent> go_location = e -> {
         //TODO: Figure out a way to change to a specific location
+        //Add a click handler to each WeatherCard with e -> LocationWeatherContent.setLocation(e.whatever())?
     };
 
     @Override
