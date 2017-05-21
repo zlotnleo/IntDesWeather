@@ -94,4 +94,8 @@ public class App extends Application {
     public void setScene(Scene s) {
         primaryStage.setScene(s);
     }
+
+    public static void main(String[] argv){
+        launch(argv);
+    }
 }

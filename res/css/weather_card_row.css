@@ -47,5 +47,12 @@
     -fx-background-color:derive(black,90%);
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
+}
 
+.top-text{
+    -fx-font-size: 16pt;
+    -fx-fill: white;
+    -fx-stroke: lightblue;
+    -fx-stroke-width: 0.5;
+    -fx-stroke-type: outside;
 }

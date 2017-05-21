@@ -7,13 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 import java.util.List;
 
 public class WeatherCardRow extends BorderPane {
     private HBox cardBox;
-    private Label titleLabel;
+    private Text titleLabel;
 
     private List<ResortWeather> resorts;
 
@@ -33,6 +34,9 @@ public class WeatherCardRow extends BorderPane {
         sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         setCenter(sp);
         cardBox.getStyleClass().addAll("card-row", "scroll-pane");
+
+        titleLabel = new Text();
+        titleLabel.getStyleClass().add("top-text");
 
         // make scroll horizontal
         sp.setOnScroll(e -> {
@@ -57,9 +61,6 @@ public class WeatherCardRow extends BorderPane {
     }
 
     public void setTitle(String title) {
-        if (titleLabel == null) {
-            titleLabel = new Label();
-        }
         titleLabel.setText(title);
     }
 
