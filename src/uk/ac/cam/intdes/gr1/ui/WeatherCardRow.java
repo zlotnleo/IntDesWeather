@@ -3,11 +3,11 @@ package uk.ac.cam.intdes.gr1.ui;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import uk.ac.cam.intdes.gr1.App;
 import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 import java.util.List;
@@ -48,7 +48,6 @@ public class WeatherCardRow extends BorderPane {
 
     public WeatherCardRow(String title, List<ResortWeather> resorts) {
         this();
-
         getStylesheets().add(getClass().getResource("/css/weather_card_row.css").toExternalForm());
 
         setTitle(title);

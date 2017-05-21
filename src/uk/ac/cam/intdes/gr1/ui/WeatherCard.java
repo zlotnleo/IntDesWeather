@@ -8,10 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import uk.ac.cam.intdes.gr1.App;
 import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 public class WeatherCard extends HBox {
+    private App app;
+
     public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
@@ -37,6 +41,9 @@ public class WeatherCard extends HBox {
     public void setLocationName(String locationName) {
         this.locationName = locationName;
         locationLabel.setText(locationName);
+    }
+    public String getLocationName(){
+        return this.locationName;
     }
 
     private String locationName;
@@ -77,11 +84,12 @@ public class WeatherCard extends HBox {
 
         weatherIcon.fitHeightProperty().bind(Bindings.multiply(heightProperty(), 0.8));
         weatherIcon.setPreserveRatio(true);
+
+        addEventHandler(MouseEvent.MOUSE_CLICKED, e -> App.getApp().weatherCardClick(this));
     }
 
     public WeatherCard(ResortWeather resort) {
         this();
-
         setLocationName(resort.getName());
     }
 }

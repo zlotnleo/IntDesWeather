@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import uk.ac.cam.intdes.gr1.api.responseobjs.WeatherReport;
 import uk.ac.cam.intdes.gr1.ui.*;
 
 import java.util.Stack;
@@ -18,6 +19,8 @@ public class App extends Application {
     private Scene home;
     private Scene settings;
     private Scene locationWeather;
+
+    private WeatherReport currentReport;
 
     private Stack<Scene> screenStack = new Stack<>();
 
@@ -34,14 +37,40 @@ public class App extends Application {
         if(!screenStack.empty())
             setScene(screenStack.pop());
     };
-    private EventHandler<MouseEvent> go_location = e -> {
-        //TODO: Figure out a way to change to a specific location
-        //Add a click handler to each WeatherCard with e -> LocationWeatherContent.setLocation(e.whatever())?
-    };
+
+    private static App app;
+    public static App getApp() {
+        return app;
+    }
+
+    public void weatherCardClick(WeatherCard wc) {
+        BackButton backButtonFromLocation = new BackButton();
+        backButtonFromLocation.addEventHandler(MouseEvent.MOUSE_CLICKED, go_back);
+        SettingsButton settingsButtonFromLocation = new SettingsButton();
+        settingsButtonFromLocation.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
+        locationWeather = MainFrame.createScene(
+                new TopPanel(
+                        backButtonFromLocation,
+                        new Label(wc.getLocationName()),
+                        settingsButtonFromLocation
+                ),
+                LocationWeatherContent.getInstance()
+        );
+        screenStack.add(primaryStage.getScene());
+        setScene(locationWeather);
+    }
+
+//    private EventHandler<MouseEvent> go_location = e -> {
+//        //TODO: Figure out a way to change to a specific location
+//        //Add a click handler to each WeatherCard with e -> LocationWeatherContent.setLocation(e.whatever())?
+//        screenStack.add(primaryStage.getScene());
+//
+//    };
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
+        app = this;
 
         Label appTitleLabel = new Label("Weather To Ski");
         appTitleLabel.getStyleClass().add("title");
@@ -69,19 +98,6 @@ public class App extends Application {
                         null
                 ),
                 SettingsContent.getInstance()
-        );
-
-        BackButton backButtonFromLocation = new BackButton();
-        backButtonFromLocation.addEventHandler(MouseEvent.MOUSE_CLICKED, go_back);
-        SettingsButton settingsButtonFromLocation = new SettingsButton();
-        settingsButtonFromLocation.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
-        locationWeather = MainFrame.createScene(
-                new TopPanel(
-                        backButtonFromLocation,
-                        new Label("Location name HERE!"),
-                        settingsButtonFromLocation
-                ),
-                LocationWeatherContent.getInstance()
         );
 
         screenStack.add(home);

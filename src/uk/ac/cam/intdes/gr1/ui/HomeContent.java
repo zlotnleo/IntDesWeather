@@ -5,6 +5,7 @@ import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import uk.ac.cam.intdes.gr1.App;
 import uk.ac.cam.intdes.gr1.Consts;
 import uk.ac.cam.intdes.gr1.api.CurrentLocationApi;
 import uk.ac.cam.intdes.gr1.api.GoogleAPIInterface;
@@ -87,6 +88,6 @@ public class HomeContent extends Content {
     }
 
     public static HomeContent getInstance(){
-        return instance;
+            return instance;
     }
 }
