@@ -9,6 +9,7 @@ import java.util.*;
 public class LocationWeather extends Pane {
 
     private ResortWeather weather;
+    private int dayIndex;
 
     public LocationWeather(int width, int height){
         super();
@@ -23,4 +24,8 @@ public class LocationWeather extends Pane {
 	    this.weather = weather;
     }
 
+    public void setDayIndex(int dayIndex) {
+        this.dayIndex = dayIndex;
+//        System.out.println("Clicked day " + dayIndex);
+    }
 }

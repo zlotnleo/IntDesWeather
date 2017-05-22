@@ -22,10 +22,11 @@ public class LocationWeatherContent extends Content{
         super();
 
         VBox vbox = new VBox();
-        //TODO init date selector
-        locationWeather = new LocationWeather((int) getWidth(), (int) (getHeight() - 0.0 /*replace with height of date selector*/));
-        //TODO subscribe to date selector
-        vbox.getChildren().addAll(/*placeholder for dateselector, */locationWeather);
+        locationWeather = new LocationWeather((int) getPrefWidth(), 0 /*Actually set below!*/);
+        DatePicker datePicker = new DatePicker(locationWeather, (int) getPrefWidth());
+        locationWeather.setPrefHeight(getHeight() - datePicker.getHeight());
+
+        vbox.getChildren().addAll(datePicker, locationWeather);
         getChildren().addAll(vbox);
     }
 

@@ -53,6 +53,6 @@
     -fx-font-size: 16pt;
     -fx-fill: white;
     -fx-stroke: lightblue;
-    -fx-stroke-width: 0.5;
+    -fx-stroke-width: 2;
     -fx-stroke-type: outside;
 }
