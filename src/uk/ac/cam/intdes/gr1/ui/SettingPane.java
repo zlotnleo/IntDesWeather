@@ -1,10 +1,12 @@
 package uk.ac.cam.intdes.gr1.ui;
 
 import javafx.event.EventHandler;
+import javafx.geometry.*;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import uk.ac.cam.intdes.gr1.AppSettings;
 
 public class SettingPane extends GridPane{
@@ -30,8 +32,19 @@ public class SettingPane extends GridPane{
         this.setPrefHeight(prefHeight);
         ColumnConstraints c1 = new ColumnConstraints(), c2 = new ColumnConstraints();
         c1.setPercentWidth(50); c2.setPercentWidth(50);
+		StackPane align1 = new StackPane(), align2 = new StackPane();
+		align1.setPrefWidth(this.getPrefWidth() / 2 - 10);
+		align2.setPrefWidth(this.getPrefWidth() / 2 - 10);
         Label lb1 = new Label("Temperature Units:");
         Label lb2 = new Label("Distance Units:");
+		lb1.setTextFill(Color.color(0,0.7,1));
+		lb1.setFont(Font.font("Courier", FontWeight.BOLD, 20));
+		lb2.setTextFill(Color.color(0,0.7,1));
+		lb2.setFont(Font.font("Courier", FontWeight.BOLD, 20));
+		align1.getChildren().add(lb1);
+		align1.setAlignment(lb1, Pos.CENTER);
+		align2.getChildren().add(lb2);
+		align1.setAlignment(lb2, Pos.CENTER);
         VBox TempBox = new VBox();
         TempBox.getChildren().addAll(new SettingButton("Celcius", new EventHandler<MouseEvent>() {
 					@Override
@@ -94,8 +107,8 @@ public class SettingPane extends GridPane{
 			);
 
         this.getColumnConstraints().addAll(c1,c2);
-        addRow(0,lb1,TempBox);
-        addRow(1, lb2,DistBox);
+        addRow(0,align1,TempBox);
+        addRow(1, align2,DistBox);
     }
 
 }
