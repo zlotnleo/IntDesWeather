@@ -8,15 +8,19 @@ import java.util.*;
 
 public class LocationWeather extends Pane {
 
-	WeatherAPIInterface wapii = WeatherAPIInterface.getInstance();
+    private ResortWeather weather;
 
     public LocationWeather(int width, int height){
         super();
         setPrefSize(width, height);
     }
 
-	public void showWeather(WeatherReport weatherHereNow){
+//	public void showWeather(){
+//
+//	}
 
-	}
+	public void setResortWeather(ResortWeather weather){
+	    this.weather = weather;
+    }
 
 }

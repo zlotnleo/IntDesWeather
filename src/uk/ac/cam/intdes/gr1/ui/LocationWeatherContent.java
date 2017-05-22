@@ -32,14 +32,23 @@ public class LocationWeatherContent extends Content{
 	// To update by dateselector, retrieve relevant date string from selector, find correct WeatherReport in
 	// weatherHere and pass to LocationWeather.showWeather()
     public void setLocation(Coordinate location){
-		List<WeatherReport> weatherH = wapii.getWeatherReportAt(location);
-		weatherH.forEach(e -> weatherHere.put(e.getDate(),e));
+//		List<WeatherReport> weatherH = wapii.getWeatherReportAt(location);
+//		weatherH.forEach(e -> weatherHere.put(e.getDate(),e));
 		// Needs testing
-		String today = new SimpleDateFormat("yyyy-MM-dd").format(LocalDate.now());
-		locationWeather.showWeather(weatherHere.get(today));
+//		String today = new SimpleDateFormat("yyyy-MM-dd").format(LocalDate.now());
+
+//		locationWeather.showWeather(weatherHere.get(today));
+
+        //TODO: COMPLETE REWRITE: no need for duplicate API calls
+        //P.S. locationWeather already has a ResortWeather
+
 	}
 
     public static LocationWeatherContent getInstance(){
         return instance;
+    }
+
+    public void setWeather(ResortWeather resortWeather) {
+        locationWeather.setResortWeather(resortWeather);
     }
 }

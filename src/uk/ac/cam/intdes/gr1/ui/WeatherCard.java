@@ -21,6 +21,10 @@ public class WeatherCard extends HBox {
         this.temperature = temperature;
     }
 
+    public ResortWeather getResortWeather() {
+        return resort;
+    }
+
     public enum WeatherType {Sunny, Clear, Cloudy, Fog, Snow, Rain} // TODO: add all
     public enum SkiingConditions {Good, Bad, Impossible}
 

@@ -7,7 +7,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import uk.ac.cam.intdes.gr1.App;
 import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 import java.util.List;
