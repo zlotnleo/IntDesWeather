@@ -35,75 +35,63 @@ public class SettingPane extends GridPane{
 		StackPane align1 = new StackPane(), align2 = new StackPane();
 		align1.setPrefWidth(this.getPrefWidth() / 2 - 10);
 		align2.setPrefWidth(this.getPrefWidth() / 2 - 10);
-        Label lb1 = new Label("Temperature Units:");
-        Label lb2 = new Label("Distance Units:");
+        Label lb1 = new Label("Temperature\nUnits:");
+        Label lb2 = new Label("Distance\nUnits:");
 		lb1.setTextFill(Color.color(0,0.7,1));
 		lb1.setFont(Font.font("Courier", FontWeight.BOLD, 20));
 		lb2.setTextFill(Color.color(0,0.7,1));
 		lb2.setFont(Font.font("Courier", FontWeight.BOLD, 20));
 		align1.getChildren().add(lb1);
-		align1.setAlignment(lb1, Pos.CENTER);
+		StackPane.setAlignment(lb1, Pos.CENTER);
 		align2.getChildren().add(lb2);
-		align1.setAlignment(lb2, Pos.CENTER);
+		StackPane.setAlignment(lb2, Pos.CENTER);
         VBox TempBox = new VBox();
-        TempBox.getChildren().addAll(new SettingButton("Celcius", new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						try{
-							SettingButton evtsource = (SettingButton)event.getSource();
-							TempBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
-							evtsource.setColor(activeColor);
-						}
-						catch(ClassCastException cce){
-							System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
-						}
-					}
-				}, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileTemp ? inactiveColor : activeColor),
-				new SettingButton("Fahrenheit", new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						try{
-							SettingButton evtsource = (SettingButton)event.getSource();
-							TempBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
-							evtsource.setColor(activeColor);
-						}
-						catch(ClassCastException cce){
-							System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
-						}
-					}
-				}, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileTemp ? activeColor : inactiveColor)
+        TempBox.getChildren().addAll(new SettingButton("Celcius", event -> {
+            try{
+                SettingButton evtsource = (SettingButton)event.getSource();
+                TempBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
+                evtsource.setColor(activeColor);
+            }
+            catch(ClassCastException cce){
+                System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
+            }
+        }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileTemp ? inactiveColor : activeColor),
+				new SettingButton("Fahrenheit", event -> {
+                    try{
+                        SettingButton evtsource = (SettingButton)event.getSource();
+                        TempBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
+                        evtsource.setColor(activeColor);
+                    }
+                    catch(ClassCastException cce){
+                        System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
+                    }
+                }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileTemp ? activeColor : inactiveColor)
 			);
         VBox DistBox = new VBox();
         DistBox.getChildren().addAll(
-        		new SettingButton("Kilometres", new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						try{
-							SettingButton evtsource = (SettingButton)event.getSource();
-							DistBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
-							evtsource.setColor(activeColor);
-							currentStatus.setMiles(false);
-						}
-						catch(ClassCastException cce){
-							System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
-						}
-					}
-				}, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileDist ? inactiveColor : activeColor),
+        		new SettingButton("Kilometres", event -> {
+                    try{
+                        SettingButton evtsource = (SettingButton)event.getSource();
+                        DistBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
+                        evtsource.setColor(activeColor);
+                        currentStatus.setMiles(false);
+                    }
+                    catch(ClassCastException cce){
+                        System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
+                    }
+                }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileDist ? inactiveColor : activeColor),
 
-				new SettingButton("Miles", new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent event) {
-						try{
-							SettingButton evtsource = (SettingButton)event.getSource();
-							DistBox.getChildren().forEach(e ->((SettingButton)e).setColor(inactiveColor));
-							evtsource.setColor(activeColor);
-							currentStatus.setMiles(true);
-						}
-						catch(ClassCastException cce){
-							System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
-						}
-					}
-				}, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileDist ? activeColor : inactiveColor)
+				new SettingButton("Miles", event -> {
+                    try{
+                        SettingButton evtsource = (SettingButton)event.getSource();
+                        DistBox.getChildren().forEach(e ->((SettingButton)e).setColor(inactiveColor));
+                        evtsource.setColor(activeColor);
+                        currentStatus.setMiles(true);
+                    }
+                    catch(ClassCastException cce){
+                        System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
+                    }
+                }, (int)getPrefHeight()/4, (int)getPrefWidth()/2 - 20, fileDist ? activeColor : inactiveColor)
 			);
 
         this.getColumnConstraints().addAll(c1,c2);
