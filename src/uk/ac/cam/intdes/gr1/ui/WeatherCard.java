@@ -15,6 +15,7 @@ import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 public class WeatherCard extends HBox {
     private App app;
+    private ResortWeather resort;
 
     public void setTemperature(double temperature) {
         this.temperature = temperature;
@@ -90,6 +91,8 @@ public class WeatherCard extends HBox {
 
     public WeatherCard(ResortWeather resort) {
         this();
+        this.resort = resort;
+
         setLocationName(resort.getName());
     }
 }

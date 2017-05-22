@@ -14,6 +14,6 @@ public class Consts {
     public static final Background LIGHTBLUE_BACKGROUND = new Background(new BackgroundFill(Color.color(0.0, 0.7, 1.0), null, null));
     public static final Background TRANSPARENT_BACKGROUND = new Background(new BackgroundFill(Color.TRANSPARENT, null, null));
 
-    public static final int MAX_ROW_CARDS = 8;
+    public static final int MAX_ROW_CARDS = 5;
     public static final double MAX_SEARCH_DIST = 1000.0;
 }
