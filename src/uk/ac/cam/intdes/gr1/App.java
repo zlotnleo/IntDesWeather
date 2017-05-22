@@ -69,8 +69,6 @@ public class App extends Application {
         app = this;
 
         Label appTitleLabel = new Label("Weather To Ski");
-        appTitleLabel.getStyleClass().add("title");
-        appTitleLabel.getStylesheets().add(getClass().getResource("/css/title.css").toExternalForm());
 
         SettingsButton settingsButtonFromHome = new SettingsButton();
         settingsButtonFromHome.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
@@ -87,10 +85,11 @@ public class App extends Application {
 
         BackButton backButtonFromSettings = new BackButton();
         backButtonFromSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, go_back);
+        Label settingsLabel = new Label("Settings");
         settings = MainFrame.createScene(
                 new TopPanel(
                         backButtonFromSettings,
-                        new Label("Settings"),
+                        settingsLabel,
                         null
                 ),
                 SettingsContent.getInstance()
