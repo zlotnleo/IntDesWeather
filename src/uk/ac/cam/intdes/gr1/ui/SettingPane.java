@@ -18,7 +18,7 @@ public class SettingPane extends GridPane{
 
     /*
         TODO: Internal border for SettingPane.
-        TODO: Fonts and colours
+        TODONE: Fonts and colours
 
     */
 
@@ -37,6 +37,8 @@ public class SettingPane extends GridPane{
 		align2.setPrefWidth(this.getPrefWidth() / 2 - 10);
         Label lb1 = new Label("Temperature\nUnits:");
         Label lb2 = new Label("Distance\nUnits:");
+		lb1.setTextAlignment(TextAlignment.CENTER);
+		lb2.setTextAlignment(TextAlignment.CENTER);
 		lb1.setTextFill(Color.color(0,0.7,1));
 		lb1.setFont(Font.font("Courier", FontWeight.BOLD, 20));
 		lb2.setTextFill(Color.color(0,0.7,1));
