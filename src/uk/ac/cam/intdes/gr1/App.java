@@ -24,11 +24,11 @@ public class App extends Application {
 
     private Stack<Scene> screenStack = new Stack<>();
 
-    private EventHandler<MouseEvent> to_home = e -> {
-        screenStack.clear();    //No back button from home
-        screenStack.add(home);
-        setScene(home);
-    };
+//    private EventHandler<MouseEvent> to_home = e -> {
+//        screenStack.clear();    //No back button from home
+//        screenStack.add(home);
+//        setScene(home);
+//    };
     private EventHandler<MouseEvent> to_settings = e -> {
         screenStack.add(primaryStage.getScene());
         setScene(settings);
@@ -59,8 +59,9 @@ public class App extends Application {
                 content
         );
         screenStack.add(primaryStage.getScene());
-
         setScene(locationWeather);
+            RecentLocations.getInstance().addLocation(wc.getResortWeather());
+        HomeContent.getInstance().setRecentLocations(RecentLocations.getInstance().getLocations());
     }
 
     @Override

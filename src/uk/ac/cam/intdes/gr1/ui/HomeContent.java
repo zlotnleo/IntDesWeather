@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import uk.ac.cam.intdes.gr1.App;
 import uk.ac.cam.intdes.gr1.Consts;
+import uk.ac.cam.intdes.gr1.RecentLocations;
 import uk.ac.cam.intdes.gr1.api.CurrentLocationApi;
 import uk.ac.cam.intdes.gr1.api.GoogleAPIInterface;
 import uk.ac.cam.intdes.gr1.api.SkiMapApi;
@@ -55,13 +56,13 @@ public class HomeContent extends Content {
         nearbyRow = new WeatherCardRow("Nearby", resorts);
         nearbyRow.prefHeightProperty().bind(rowHeightBinding);
 
-        recentRow = new WeatherCardRow("Recent", resorts);
+        recentRow = new WeatherCardRow("Recent", RecentLocations.getInstance().getLocations());
         recentRow.prefHeightProperty().bind(rowHeightBinding);
 
-        suggestedRow = new WeatherCardRow("Suggested", resorts);
-        suggestedRow.prefHeightProperty().bind(rowHeightBinding);
+//        suggestedRow = new WeatherCardRow("Suggested", resorts);
+//        suggestedRow.prefHeightProperty().bind(rowHeightBinding);
 
-        rows.getChildren().addAll(searchBar, nearbyRow, recentRow, suggestedRow);
+        rows.getChildren().addAll(searchBar, nearbyRow, recentRow/*, suggestedRow*/);
 
         this.getChildren().add(rows);
 
@@ -90,5 +91,9 @@ public class HomeContent extends Content {
 
     public static HomeContent getInstance(){
             return instance;
+    }
+
+    public void setRecentLocations(List<ResortWeather> recentLocations) {
+        recentRow.setResorts(recentLocations);
     }
 }

@@ -6,8 +6,6 @@ import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +13,7 @@ import java.util.stream.Collectors;
 public class RecentLocations {
 
     private List<ResortWeather> recent;
-    private static RecentLocations instance = new RecentLocations();
+    private static RecentLocations instance;
 
     private RecentLocations(){
         try {
@@ -38,7 +36,10 @@ public class RecentLocations {
     }
 
     public void addLocation(ResortWeather c){
+        recent = recent.stream().filter(r -> !c.getName().equals(r.getName())).collect(Collectors.toList());
         recent.add(0, c);
+        recent = recent.subList(0, Math.min(Consts.MAX_ROW_CARDS, recent.size()));
+        save();
     }
 
     public List<ResortWeather> getLocations(){
@@ -59,6 +60,8 @@ public class RecentLocations {
     }
 
     public static RecentLocations getInstance(){
+        if(instance == null)
+            instance = new RecentLocations();
         return instance;
     }
 }
