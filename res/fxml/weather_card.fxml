@@ -5,12 +5,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+
 <!--old bg colour #2498b5-->
-<fx:root style="-fx-background-color: #00b3ff;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+
+<fx:root style="-fx-background-color: #00b3ff;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
    <BorderPane prefHeight="144.0" prefWidth="152.0">
       <top>
-             <Label fx:id="locationLabel" text="Label" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+             <Label fx:id="locationLabel" prefHeight="59.0" prefWidth="152.0" text="Label" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" BorderPane.alignment="CENTER">
               <font>
                  <Font name="System Bold" size="16.0" />
               </font>
@@ -22,10 +28,30 @@
             </ImageView>
       </left>
       <center>
-         <Label fx:id="infoLabel" text="13 °C" textFill="WHITE" BorderPane.alignment="CENTER">
-            <font>
-               <Font size="14.0" />
-            </font></Label>
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+               <Label fx:id="tempLabel" text="13 °C" textFill="WHITE">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label fx:id="windLabel" text="15 Km/h" textFill="WHITE" />
+               <HBox alignment="CENTER" prefHeight="21.0" prefWidth="72.0">
+                  <children>
+                     <Circle fx:id="conditionCircle" radius="5" stroke="BLACK" strokeType="INSIDE">
+                        <fill>
+                           <LinearGradient endX="1.0" endY="1.0">
+                              <stops>
+                                 <Stop color="#11c400" />
+                                 <Stop color="WHITE" offset="1.0" />
+                              </stops>
+                           </LinearGradient>
+                        </fill></Circle>
+                     <Label fx:id="snowfallLabel" text="30 cm" textFill="WHITE" />
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
       </center>
    </BorderPane>
 </fx:root>

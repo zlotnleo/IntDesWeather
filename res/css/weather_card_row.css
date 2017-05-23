@@ -7,7 +7,7 @@
 }
 
 .top-text {
-    -fx-text-fill: black;
+    /*-fx-text-fill: black;*/
 }
 
  /*The main scrollbar **track** CSS class*/

@@ -48,7 +48,7 @@ public class SettingPane extends GridPane{
 		align2.getChildren().add(lb2);
 		StackPane.setAlignment(lb2, Pos.CENTER);
         VBox TempBox = new VBox();
-        TempBox.getChildren().addAll(new SettingButton("Celcius", event -> {
+        TempBox.getChildren().addAll(new SettingButton("Celsius", event -> {
             try{
                 SettingButton evtsource = (SettingButton)event.getSource();
                 TempBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));

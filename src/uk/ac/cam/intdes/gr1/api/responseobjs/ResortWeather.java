@@ -17,7 +17,7 @@ public class ResortWeather
 		this.name = name;
 		this.coord = location;
 		weatherApi = WeatherAPIInterface.getInstance();
-//		dailyReports = weatherApi.getWeatherReportAt(coord); TODO uncomment for real API call
+//		dailyReports = weatherApi.getWeatherReportAt(coord); // TODO uncomment for real API call
 	}
 
 	public String getName()
