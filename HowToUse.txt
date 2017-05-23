@@ -1,2 +1,3 @@
 The code relies on you having the geoip2-2.9.0.jar library file.
 The /res folder must also be in the classpath
+Requires a functional internet connection
