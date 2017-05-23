@@ -3,6 +3,7 @@ package uk.ac.cam.intdes.gr1.ui;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextAlignment;
@@ -25,28 +26,29 @@ public class DatePicker extends HBox{
     }
 
     public DatePicker(LocationWeather locationWeather, int width){
-        super(10);
+        super(1);
         setAlignment(Pos.CENTER);
         Calendar calendar = Calendar.getInstance();
-        ObservableList<Node> labels = getChildren();
+        ObservableList<Node> buttons = getChildren();
         getStylesheets().add(getClass().getResource("/css/date.css").toExternalForm());
         for(int i = 0; i < 7; i++) {
-            Label l = new Label(dayToString(calendar.get(Calendar.DAY_OF_WEEK)) + "\n" + calendar.get(Calendar.DATE));
-            labels.add(l);
-            l.setPrefWidth(width / 7 - 10);
-            l.setTextAlignment(TextAlignment.CENTER);
-            l.getStyleClass().add("date");
+            Button b = new Button(dayToString(calendar.get(Calendar.DAY_OF_WEEK)) + "\n" + calendar.get(Calendar.DATE));
+            buttons.add(b);
+            b.setPrefWidth(width / 7);
+            b.setTextAlignment(TextAlignment.CENTER);
+            b.setStyle("-fx-font: 16 system; -fx-font-weight: bold;");
+            b.getStyleClass().add("date");
             calendar.add(Calendar.DATE, 1);
         }
 
         //Parameters in lambdas must be final
         //There has to be a better way, but...
-        labels.get(0).setOnMouseClicked(event -> locationWeather.setDayIndex(0));
-        labels.get(1).setOnMouseClicked(event -> locationWeather.setDayIndex(1));
-        labels.get(2).setOnMouseClicked(event -> locationWeather.setDayIndex(2));
-        labels.get(3).setOnMouseClicked(event -> locationWeather.setDayIndex(3));
-        labels.get(4).setOnMouseClicked(event -> locationWeather.setDayIndex(4));
-        labels.get(5).setOnMouseClicked(event -> locationWeather.setDayIndex(5));
-        labels.get(6).setOnMouseClicked(event -> locationWeather.setDayIndex(6));
+        buttons.get(0).setOnMouseClicked(event -> locationWeather.setDayIndex(0));
+        buttons.get(1).setOnMouseClicked(event -> locationWeather.setDayIndex(1));
+        buttons.get(2).setOnMouseClicked(event -> locationWeather.setDayIndex(2));
+        buttons.get(3).setOnMouseClicked(event -> locationWeather.setDayIndex(3));
+        buttons.get(4).setOnMouseClicked(event -> locationWeather.setDayIndex(4));
+        buttons.get(5).setOnMouseClicked(event -> locationWeather.setDayIndex(5));
+        buttons.get(6).setOnMouseClicked(event -> locationWeather.setDayIndex(6));
     }
 }
