@@ -28,7 +28,7 @@
             </ImageView>
       </left>
       <center>
-         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="35.0" BorderPane.alignment="CENTER">
             <children>
                <Label fx:id="tempLabel" text="13 °C" textFill="WHITE">
                   <font>
@@ -38,7 +38,7 @@
                <Label fx:id="windLabel" text="15 Km/h" textFill="WHITE" />
                <HBox alignment="CENTER" prefHeight="21.0" prefWidth="72.0">
                   <children>
-                     <Circle fx:id="conditionCircle" radius="5" stroke="BLACK" strokeType="INSIDE">
+                     <Circle fx:id="conditionsCircle" radius="5" stroke="BLACK" strokeType="INSIDE">
                         <fill>
                            <LinearGradient endX="1.0" endY="1.0">
                               <stops>

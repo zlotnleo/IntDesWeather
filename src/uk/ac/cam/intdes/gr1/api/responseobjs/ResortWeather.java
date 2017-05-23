@@ -9,7 +9,7 @@ public class ResortWeather
 {
 	private String name;
 	private Coordinate coord;
-    private List<WeatherReport> dailyReports = new ArrayList<>();
+    private List<WeatherReport> dailyReports;
     private WeatherAPIInterface weatherApi;
 
 	public ResortWeather(String name, Coordinate location)
@@ -17,7 +17,6 @@ public class ResortWeather
 		this.name = name;
 		this.coord = location;
 		weatherApi = WeatherAPIInterface.getInstance();
-//		dailyReports = weatherApi.getWeatherReportAt(coord); // TODO uncomment for real API call
 	}
 
 	public String getName()
@@ -43,14 +42,18 @@ public class ResortWeather
     }
 
     public List<WeatherReport> getDailyReports() {
+	    if (dailyReports == null) {
+	        return new ArrayList<>();
+        }
         return dailyReports;
     }
-
-    public void setDailyReports(List<WeatherReport> dailyReports) {
-        this.dailyReports = dailyReports;
+    public void fetchWeather() {
+	    if (dailyReports == null) {
+//            dailyReports = weatherApi.getWeatherReportAt(coord); // TODO uncomment for real API call
+        }
     }
 
-	@Override
+    @Override
 	public String toString()
 	{
 		return name + " " + coord;
