@@ -49,7 +49,7 @@ public class ResortWeather
     }
     public void fetchWeather() {
 	    if (dailyReports == null) {
-//            dailyReports = weatherApi.getWeatherReportAt(coord); // TODO uncomment for real API call
+            dailyReports = weatherApi.getWeatherReportAt(coord); // TODO uncomment for real API call
         }
     }
 

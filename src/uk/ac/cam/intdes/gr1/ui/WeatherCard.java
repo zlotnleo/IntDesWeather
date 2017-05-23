@@ -5,13 +5,13 @@ import java.util.HashMap;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import uk.ac.cam.intdes.gr1.App;
 import uk.ac.cam.intdes.gr1.AppSettings;
@@ -124,7 +124,7 @@ public class WeatherCard extends HBox {
         locationLabel.setWrapText(true);
         locationLabel.setAlignment(Pos.CENTER);
 
-//        HBox.setMargin(conditionsCircle, new Insets(2, 2, 2, 2));
+        HBox.setMargin(conditionsCircle, new Insets(2, 5, 2, 2));
     }
 
     public WeatherCard(ResortWeather resort) {
@@ -159,8 +159,8 @@ public class WeatherCard extends HBox {
                         conditions = SkiingConditions.Good;
                 }
 
-                if (today.getChanceOfSnow() == 0 && today.getTotalSnowfall() == 0) {
-                    conditions = SkiingConditions.Bad;
+                if (today.getChanceOfSnow() < 1 && today.getTotalSnowfall() < 1) {
+                    conditions = SkiingConditions.Impossible;
                 }
                 setConditions(conditions);
             }
@@ -191,15 +191,15 @@ public class WeatherCard extends HBox {
     public void setTemperature(WeatherReport today ) {
         tempLabel.textProperty().bind(
                 Bindings.when(AppSettings.getInstance().getFahrenheitProperty())
-                        .then(String.valueOf(today.getBottom().getMaxTempC()) + " °C")
-                        .otherwise(String.valueOf(today.getBottom().getMaxTempF()) + " °F"));
+                        .then(String.valueOf(today.getBottom().getMaxTempF()) + " °F")
+                        .otherwise(String.valueOf(today.getBottom().getMaxTempC()) + " °C"));
     }
 
     public void setWindSpeed(HourlyWeatherReport now) {
         windLabel.textProperty().bind(
                 Bindings.when(AppSettings.getInstance().getMilesProperty())
-                        .then(String.valueOf(now.getBottom().getWindSpeedKmph()) + " Km/h")
-                        .otherwise(String.valueOf(now.getBottom().getWindSpeedKmph()) + " M/h"));
+                        .then(String.valueOf(now.getBottom().getWindSpeedKmph()) + " M/h")
+                        .otherwise(String.valueOf(now.getBottom().getWindSpeedKmph()) + " Km/h"));
     }
 
     public void setSnowfall(WeatherReport today ) {
@@ -212,7 +212,7 @@ public class WeatherCard extends HBox {
         } else if (conditions.equals(SkiingConditions.Bad)) {
             conditionsCircle.setFill(Color.YELLOW);
         } else {
-            conditionsCircle.setFill(Color.GREEN);
+            conditionsCircle.setFill(Color.LAWNGREEN);
         }
     }
 }

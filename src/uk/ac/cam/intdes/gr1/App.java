@@ -66,6 +66,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
+        primaryStage.setTitle("WTS");
         app = this;
 
         Label appTitleLabel = new Label("Weather To Ski");
@@ -97,7 +98,7 @@ public class App extends Application {
 
         screenStack.add(home);
         primaryStage.setScene(home);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
