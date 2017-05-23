@@ -25,20 +25,20 @@ public class LocationWeather extends GridPane {
 
 	public void showWeather(){
         getChildren().clear();
-        //List<WeatherReport> weatherReports = weather.getDailyReports();
-        //WeatherReport dailyWeather = weatherReports.get(dayIndex);
+        List<WeatherReport> weatherReports = weather.getDailyReports();
+        WeatherReport dailyWeather = weatherReports.get(dayIndex);
         setAlignment(Pos.CENTER);
         setHgap(10);
         setVgap(10);
         setPadding(new Insets(25,25,25,25));
 
         Label snowChance = new Label("Chance of Snow: " + "67%");
-        //Label snowChance = new Label("Chance of Snow: " + String.valueOf(dailyWeather.getChanceOfSnow()));
+//        Label snowChance = new Label("Chance of Snow: " + String.valueOf(dailyWeather.getChanceOfSnow()));
         snowChance.setStyle("-fx-font: 18 system;");
         add(snowChance,0,0);
 
         Label totalSnow = new Label("Total Snowfall: " + "117cm");
-        //Label totalSnow = new Label("Total Snowfall: " + String.valueOf(dailyWeather.getTotalSnowfall()));
+//        Label totalSnow = new Label("Total Snowfall: " + String.valueOf(dailyWeather.getTotalSnowfall()));
         totalSnow.setStyle("-fx-font: 18 system;");
         add(totalSnow,0,1);
 

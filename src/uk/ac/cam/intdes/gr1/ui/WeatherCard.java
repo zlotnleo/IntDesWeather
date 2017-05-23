@@ -159,6 +159,12 @@ public class WeatherCard extends HBox {
                         conditions = SkiingConditions.Good;
                 }
 
+                double temp = now.getBottom().getTempC();
+                if(temp > 10.0)
+                    conditions = SkiingConditions.Impossible;
+                else if (now.getBottom().getTempC() > 3.0 && conditions != SkiingConditions.Impossible)
+                    conditions = SkiingConditions.Bad;
+
                 if (today.getChanceOfSnow() < 1 && today.getTotalSnowfall() < 1) {
                     conditions = SkiingConditions.Impossible;
                 }
