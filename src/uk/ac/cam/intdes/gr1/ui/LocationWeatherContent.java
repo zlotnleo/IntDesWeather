@@ -22,24 +22,34 @@ public class LocationWeatherContent extends Content{
         super();
 
         VBox vbox = new VBox();
-        //TODO init date selector
-        locationWeather = new LocationWeather((int) getWidth(), (int) (getHeight() - 0.0 /*replace with height of date selector*/));
-        //TODO subscribe to date selector
-        vbox.getChildren().addAll(/*placeholder for dateselector, */locationWeather);
+        locationWeather = new LocationWeather((int) getPrefWidth(), 0 /*Actually set below!*/);
+        DatePicker datePicker = new DatePicker(locationWeather, (int) getPrefWidth());
+        locationWeather.setPrefHeight(getHeight() - datePicker.getHeight());
+
+        vbox.getChildren().addAll(datePicker, locationWeather);
         getChildren().addAll(vbox);
     }
 
 	// To update by dateselector, retrieve relevant date string from selector, find correct WeatherReport in
 	// weatherHere and pass to LocationWeather.showWeather()
     public void setLocation(Coordinate location){
-		List<WeatherReport> weatherH = wapii.getWeatherReportAt(location);
-		weatherH.forEach(e -> weatherHere.put(e.getDate(),e));
+//		List<WeatherReport> weatherH = wapii.getWeatherReportAt(location);
+//		weatherH.forEach(e -> weatherHere.put(e.getDate(),e));
 		// Needs testing
-		String today = new SimpleDateFormat("yyyy-MM-dd").format(LocalDate.now());
-		locationWeather.showWeather(weatherHere.get(today));
+//		String today = new SimpleDateFormat("yyyy-MM-dd").format(LocalDate.now());
+
+//		locationWeather.showWeather(weatherHere.get(today));
+
+        //TODO: COMPLETE REWRITE: no need for duplicate API calls
+        //P.S. locationWeather already has a ResortWeather
+
 	}
 
     public static LocationWeatherContent getInstance(){
         return instance;
+    }
+
+    public void setWeather(ResortWeather resortWeather) {
+        locationWeather.setResortWeather(resortWeather);
     }
 }

@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-
-<fx:root style="-fx-background-color: #2498b5;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<!--old bg colour #2498b5-->
+<fx:root style="-fx-background-color: #00b3ff;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <BorderPane prefHeight="144.0" prefWidth="152.0">
       <top>
              <Label fx:id="locationLabel" text="Label" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">

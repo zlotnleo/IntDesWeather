@@ -1,0 +1,8 @@
+.date {
+    -fx-font-family: "Courier";
+    -fx-font-size: 2em;
+    /*-fx-font-style: oblique;*/
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #00b3ff;
+}

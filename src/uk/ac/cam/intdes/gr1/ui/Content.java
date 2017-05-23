@@ -6,7 +6,7 @@ import uk.ac.cam.intdes.gr1.Consts;
 
 public class Content extends Pane {
 
-    public static final Background MOUNTAIN_BACKGROUND = new Background(new BackgroundImage(new Image("bg.png"),
+    public static final Background MOUNTAIN_BACKGROUND = new Background(new BackgroundImage(new Image("background.png"),
             BackgroundRepeat.NO_REPEAT,
             BackgroundRepeat.NO_REPEAT,
             BackgroundPosition.CENTER,

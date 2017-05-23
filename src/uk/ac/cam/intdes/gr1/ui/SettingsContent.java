@@ -1,12 +1,13 @@
 package uk.ac.cam.intdes.gr1.ui;
 
+import javafx.geometry.*;
+import javafx.scene.layout.*;
+
 import java.io.*;
 
 public class SettingsContent extends Content {
 
 	// TODO: save settings on app close.
-	// TODO: actually make this look anything like the rest of the app.
-	// TODO: HUGE visual difference between settings and other parts. My bad ¯\_(ツ)_/¯
 
     private static SettingsContent instance = new SettingsContent();
 
@@ -25,9 +26,14 @@ public class SettingsContent extends Content {
 			System.out.println("ReadLine failed.");
 		}
 
-		SettingPane SPane = new SettingPane((int)this.getPrefHeight(), (int)this.getPrefWidth(),
-				tempMode, distMode);
-        this.getChildren().add(SPane);
+		SettingPane SPanel = new SettingPane((int)this.getPrefHeight(), (int)this.getPrefWidth(), tempMode, distMode);
+		StackPane SPaneWrapper = new StackPane();
+		SPaneWrapper.setPrefSize(this.getPrefWidth(), this.getPrefHeight());
+		SPaneWrapper.getChildren().add(SPanel);
+		SPaneWrapper.setMargin(SPanel,new Insets(10,10,10,10));
+
+
+        this.getChildren().add(SPaneWrapper);
     }
 
     public static SettingsContent getInstance(){

@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import uk.ac.cam.intdes.gr1.App;
+import uk.ac.cam.intdes.gr1.Consts;
 import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
 
 public class WeatherCard extends HBox {
@@ -19,6 +20,10 @@ public class WeatherCard extends HBox {
 
     public void setTemperature(double temperature) {
         this.temperature = temperature;
+    }
+
+    public ResortWeather getResortWeather() {
+        return resort;
     }
 
     public enum WeatherType {Sunny, Clear, Cloudy, Fog, Snow, Rain} // TODO: add all
@@ -79,10 +84,10 @@ public class WeatherCard extends HBox {
             throw new RuntimeException(exception);
         }
 
+        setOnMouseClicked(e -> App.getApp().weatherCardClick(this));
+
         weatherIcon.fitHeightProperty().bind(Bindings.multiply(heightProperty(), 0.8));
         weatherIcon.setPreserveRatio(true);
-
-        addEventHandler(MouseEvent.MOUSE_CLICKED, e -> App.getApp().weatherCardClick(this));
     }
 
     public WeatherCard(ResortWeather resort) {

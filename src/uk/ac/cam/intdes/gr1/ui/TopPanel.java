@@ -16,7 +16,7 @@ import javafx.scene.layout.Region;
 import uk.ac.cam.intdes.gr1.Consts;
 
 public class TopPanel extends HBox {
-    public TopPanel(@Nullable Region left, @Nullable Region middle, @Nullable Region right){
+    public TopPanel(@Nullable Region left, Label middle, @Nullable Region right){
         super(0);
 
         if (left == null) {
@@ -46,6 +46,8 @@ public class TopPanel extends HBox {
         Region rightSpacing = new Region();
         HBox.setHgrow(rightSpacing, Priority.ALWAYS);
 
+        getStylesheets().add(getClass().getResource("/css/title.css").toExternalForm());
+        middle.getStyleClass().add("title");
         getChildren().addAll(left, leftSpacing, middle, rightSpacing, right);
     }
 }

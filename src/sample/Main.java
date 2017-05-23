@@ -13,20 +13,20 @@ public class Main extends Application {
         ScrollPane sp1 = new ScrollPane();
         HBox hbox = new HBox();
 
-        WeatherCard card = new WeatherCard();
-        card.setWeatherType(WeatherCard.WeatherType.Snow);
-        card.setLocationName("Zel am See");
-        hbox.getChildren().add(card);
-
-        WeatherCard card2 = new WeatherCard();
-        card.setWeatherType(WeatherCard.WeatherType.Sunny);
-        card.setLocationName("Bla");
-        hbox.getChildren().add(card2);
-
-        WeatherCard card3 = new WeatherCard();
-        card.setWeatherType(WeatherCard.WeatherType.Sunny);
-        card.setLocationName("Bla");
-        hbox.getChildren().add(card3);
+//        WeatherCard card = new WeatherCard();
+//        card.setWeatherType(WeatherCard.WeatherType.Snow);
+//        card.setLocationName("Zel am See");
+//        hbox.getChildren().add(card);
+//
+//        WeatherCard card2 = new WeatherCard();
+//        card.setWeatherType(WeatherCard.WeatherType.Sunny);
+//        card.setLocationName("Bla");
+//        hbox.getChildren().add(card2);
+//
+//        WeatherCard card3 = new WeatherCard();
+//        card.setWeatherType(WeatherCard.WeatherType.Sunny);
+//        card.setLocationName("Bla");
+//        hbox.getChildren().add(card3);
 
         sp1.setContent(hbox);
         sp1.setFitToHeight(true);

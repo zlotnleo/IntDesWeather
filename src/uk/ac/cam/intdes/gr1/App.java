@@ -48,24 +48,20 @@ public class App extends Application {
         backButtonFromLocation.addEventHandler(MouseEvent.MOUSE_CLICKED, go_back);
         SettingsButton settingsButtonFromLocation = new SettingsButton();
         settingsButtonFromLocation.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
+        LocationWeatherContent content = LocationWeatherContent.getInstance();
+        content.setWeather(wc.getResortWeather());
         locationWeather = MainFrame.createScene(
                 new TopPanel(
                         backButtonFromLocation,
                         new Label(wc.getLocationName()),
                         settingsButtonFromLocation
                 ),
-                LocationWeatherContent.getInstance()
+                content
         );
         screenStack.add(primaryStage.getScene());
+
         setScene(locationWeather);
     }
-
-//    private EventHandler<MouseEvent> go_location = e -> {
-//        //TODO: Figure out a way to change to a specific location
-//        //Add a click handler to each WeatherCard with e -> LocationWeatherContent.setLocation(e.whatever())?
-//        screenStack.add(primaryStage.getScene());
-//
-//    };
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -73,8 +69,6 @@ public class App extends Application {
         app = this;
 
         Label appTitleLabel = new Label("Weather To Ski");
-        appTitleLabel.getStyleClass().add("title");
-        appTitleLabel.getStylesheets().add(getClass().getResource("/css/title.css").toExternalForm());
 
         SettingsButton settingsButtonFromHome = new SettingsButton();
         settingsButtonFromHome.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
@@ -91,10 +85,11 @@ public class App extends Application {
 
         BackButton backButtonFromSettings = new BackButton();
         backButtonFromSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, go_back);
+        Label settingsLabel = new Label("Settings");
         settings = MainFrame.createScene(
                 new TopPanel(
                         backButtonFromSettings,
-                        new Label("Settings"),
+                        settingsLabel,
                         null
                 ),
                 SettingsContent.getInstance()

@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.text.*;
 
 import javax.swing.*;
 
@@ -21,6 +21,8 @@ public class SettingButton extends StackPane{
         super();
         Label lbl = new Label(text);
         this.getChildren().add(lbl);
+		lbl.setTextFill(Color.WHITE);
+		lbl.setFont(Font.font("Courier", FontWeight.BOLD, 20));
         this.setAlignment(lbl, Pos.CENTER);
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, onClick);
         this.setPrefWidth(width);

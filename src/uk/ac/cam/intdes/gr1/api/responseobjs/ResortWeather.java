@@ -1,5 +1,7 @@
 package uk.ac.cam.intdes.gr1.api.responseobjs;
 
+import uk.ac.cam.intdes.gr1.api.WeatherAPIInterface;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,15 +10,14 @@ public class ResortWeather
 	private String name;
 	private Coordinate coord;
     private List<WeatherReport> dailyReports = new ArrayList<>();
-
-    public ResortWeather() {
-
-    }
+    private WeatherAPIInterface weatherApi;
 
 	public ResortWeather(String name, Coordinate location)
 	{
 		this.name = name;
 		this.coord = location;
+		weatherApi = WeatherAPIInterface.getInstance();
+//		dailyReports = weatherApi.getWeatherReportAt(coord); TODO uncomment for real API call
 	}
 
 	public String getName()
