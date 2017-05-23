@@ -106,7 +106,7 @@ public class SettingPane extends GridPane{
 			);
 		VBox resetButton = new VBox();
 		resetButton.getChildren().add(
-				new SettingButton("Reset", e -> RecentLocations.getInstance().clear(), (int)getPrefHeight() / 5, (int)getPrefWidth() / 2 - 20, activeColor)
+				new resetButton((int)getPrefHeight() / 5, (int)getPrefWidth() / 2 - 20)
 		);
 
         this.getColumnConstraints().addAll(c1,c2);
