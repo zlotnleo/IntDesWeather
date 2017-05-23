@@ -15,6 +15,7 @@ public class WeatherAPIInterface
 	private static final String API_URL = "api.worldweatheronline.com/premium/v1/ski.ashx";
 //	private static final String API_KEY = "e6d4c684320349cab8b131651171105"; // change to this one for release
     private static final String API_KEY = "319b714191034c3289e92300172305"; // this is for testing
+//	private static final String API_KEY = "cdb9677bc3154f8f9d1142317172305";
 
 	private API api;
 	private static WeatherAPIInterface instance;
