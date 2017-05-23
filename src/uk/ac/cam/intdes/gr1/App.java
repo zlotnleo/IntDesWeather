@@ -50,6 +50,8 @@ public class App extends Application {
         settingsButtonFromLocation.addEventHandler(MouseEvent.MOUSE_CLICKED, to_settings);
         LocationWeatherContent content = LocationWeatherContent.getInstance();
         content.setWeather(wc.getResortWeather());
+        content.getLocationWeather().showWeather();
+
         locationWeather = MainFrame.createScene(
                 new TopPanel(
                         backButtonFromLocation,
@@ -60,7 +62,7 @@ public class App extends Application {
         );
         screenStack.add(primaryStage.getScene());
         setScene(locationWeather);
-            RecentLocations.getInstance().addLocation(wc.getResortWeather());
+        RecentLocations.getInstance().addLocation(wc.getResortWeather());
         HomeContent.getInstance().setRecentLocations(RecentLocations.getInstance().getLocations());
     }
 

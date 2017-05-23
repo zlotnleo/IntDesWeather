@@ -12,7 +12,12 @@ public class LocationWeatherContent extends Content{
 
 	private WeatherAPIInterface wapii = WeatherAPIInterface.getInstance();
 	private static LocationWeatherContent instance = new LocationWeatherContent();
-	// Reference to the current LocationWeather pane. Shouldn't actually need updating at any point, so could probably be made static/final.
+
+    public LocationWeather getLocationWeather() {
+        return locationWeather;
+    }
+
+    // Reference to the current LocationWeather pane. Shouldn't actually need updating at any point, so could probably be made static/final.
 	private  LocationWeather locationWeather;
 
 	// Indexes weather by date for the current location.

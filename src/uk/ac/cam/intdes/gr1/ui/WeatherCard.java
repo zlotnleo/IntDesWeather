@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -116,7 +117,7 @@ public class WeatherCard extends HBox {
             throw new RuntimeException(exception);
         }
 
-        setOnMouseClicked(e -> App.getApp().weatherCardClick(this));
+        addEventHandler(MouseEvent.MOUSE_CLICKED, e -> App.getApp().weatherCardClick(this));
 
         weatherIcon.fitHeightProperty().bind(Bindings.multiply(heightProperty(), 0.8));
         weatherIcon.setPreserveRatio(true);

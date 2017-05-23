@@ -19,26 +19,25 @@ public class LocationWeather extends GridPane {
     public LocationWeather(int width, int height){
         super();
         dayIndex = 0;
-        showWeather();
         setPrefSize(width, height);
     }
 
 	public void showWeather(){
         getChildren().clear();
-        //List<WeatherReport> weatherReports = weather.getDailyReports();
-        //WeatherReport dailyWeather = weatherReports.get(dayIndex);
+        List<WeatherReport> weatherReports = weather.getDailyReports();
+        WeatherReport dailyWeather = weatherReports.get(dayIndex);
         setAlignment(Pos.CENTER);
         setHgap(10);
         setVgap(10);
         setPadding(new Insets(25,25,25,25));
 
-        Label snowChance = new Label("Chance of Snow: " + "67%");
-        //Label snowChance = new Label("Chance of Snow: " + String.valueOf(dailyWeather.getChanceOfSnow()));
+//        Label snowChance = new Label("Chance of Snow: " + "67%");
+        Label snowChance = new Label("Chance of Snow: " + String.valueOf(dailyWeather.getChanceOfSnow()));
         snowChance.setStyle("-fx-font: 18 system;");
         add(snowChance,0,0);
 
-        Label totalSnow = new Label("Total Snowfall: " + "117cm");
-        //Label totalSnow = new Label("Total Snowfall: " + String.valueOf(dailyWeather.getTotalSnowfall()));
+//        Label totalSnow = new Label("Total Snowfall: " + "117cm");
+        Label totalSnow = new Label("Total Snowfall: " + String.valueOf(dailyWeather.getTotalSnowfall()));
         totalSnow.setStyle("-fx-font: 18 system;");
         add(totalSnow,0,1);
 
@@ -54,12 +53,12 @@ public class LocationWeather extends GridPane {
         topMinTemp.setStyle("-fx-font: 18 system; -fx-text-fill: white;");
         if (!AppSettings.getInstance().getFahrenheitProperty().getValue()) {
             //int minTemp = dailyWeather.getTop().getMinTempC();
-            //topMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getTop().getMinTempC()));
-            topMinTemp.setText("Min Temperature: " + "3C");
+            topMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getTop().getMinTempC()));
+//            topMinTemp.setText("Min Temperature: " + "3C");
         } else {
             //int minTemp = dailyWeather.getTop().getMinTempF();
-            //topMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getTop().getMinTempF()));
-            topMinTemp.setText("Min Temperature: " + "30F");
+            topMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getTop().getMinTempF()));
+//            topMinTemp.setText("Min Temperature: " + "30F");
         }
         topPane.add(topMinTemp,1,1);
 
@@ -67,12 +66,12 @@ public class LocationWeather extends GridPane {
         topMaxTemp.setStyle("-fx-font: 18 system; -fx-text-fill: white;");
         if (!AppSettings.getInstance().getFahrenheitProperty().getValue()) {
             //int maxTemp = dailyWeather.getTop().getMaxTempC();
-            //topMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getTop().getMaxTempC()));
-            topMaxTemp.setText("Max Temperature: " + "5C");
+            topMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getTop().getMaxTempC()));
+//            topMaxTemp.setText("Max Temperature: " + "5C");
         } else {
             //int maxTemp = dailyWeather.getTop().getMaxTempF();
-            //topMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getTop().getMaxTempF()));
-            topMaxTemp.setText("Max Temperature: " + "36F");
+            topMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getTop().getMaxTempF()));
+//            topMaxTemp.setText("Max Temperature: " + "36F");
         }
         topPane.add(topMaxTemp,1,2);
 
@@ -91,12 +90,12 @@ public class LocationWeather extends GridPane {
         midMinTemp.setStyle("-fx-font: 18 system; -fx-text-fill: white;");
         if (!AppSettings.getInstance().getFahrenheitProperty().getValue()) {
             //int minTemp = dailyWeather.getMid().getMinTempC();
-            //midMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getMid().getMinTempC()));
-            midMinTemp.setText("Min Temperature: " + "5C");
+            midMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getMid().getMinTempC()));
+//            midMinTemp.setText("Min Temperature: " + "5C");
         } else {
             //int minTemp = dailyWeather.getMid().getMinTempF();
-            //midMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getMid().getMinTempF()));
-            midMinTemp.setText("Min Temperature: " + "38F");
+            midMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getMid().getMinTempF()));
+//            midMinTemp.setText("Min Temperature: " + "38F");
         }
         midPane.add(midMinTemp,1,1);
 
@@ -104,12 +103,12 @@ public class LocationWeather extends GridPane {
         midMaxTemp.setStyle("-fx-font: 18 system; -fx-text-fill: white;");
         if (!AppSettings.getInstance().getFahrenheitProperty().getValue()) {
             //int maxTemp = dailyWeather.getMid().getMaxTempC();
-            //midMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getMid().getMaxTempC()));
-            midMaxTemp.setText("Max Temperature: " + "7C");
+            midMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getMid().getMaxTempC()));
+//            midMaxTemp.setText("Max Temperature: " + "7C");
         } else {
             //int maxTemp = dailyWeather.getMid().getMaxTempF();
-            //midMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getMid().getMaxTempF()));
-            midMaxTemp.setText("Max Temperature: " + "42F");
+            midMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getMid().getMaxTempF()));
+//            midMaxTemp.setText("Max Temperature: " + "42F");
         }
         midPane.add(midMaxTemp,1,2);
 
@@ -128,12 +127,12 @@ public class LocationWeather extends GridPane {
         bottomMinTemp.setStyle("-fx-font: 18 system; -fx-text-fill: white;");
         if (!AppSettings.getInstance().getFahrenheitProperty().getValue()) {
             //int bottomTemp = dailyWeather.getBottom().getMinTempC();
-            //bottomMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getBottom().getMinTempC()));
-            bottomMinTemp.setText("Min Temperature: " + "8C");
+            bottomMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getBottom().getMinTempC()));
+//            bottomMinTemp.setText("Min Temperature: " + "8C");
         } else {
             //int bottomTemp = dailyWeather.getBottom().getMinTempF();
-            //bottomMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getBottom().getMinTempF()));
-            bottomMinTemp.setText("Min Temperature: " + "44F");
+            bottomMinTemp.setText("Min Temperature: " + String.valueOf(dailyWeather.getBottom().getMinTempF()));
+//            bottomMinTemp.setText("Min Temperature: " + "44F");
         }
         bottomPane.add(bottomMinTemp,1,1);
 
@@ -142,12 +141,12 @@ public class LocationWeather extends GridPane {
         bottomMaxTemp.setStyle("-fx-font: 18 system; -fx-text-fill: white;");
         if (!AppSettings.getInstance().getFahrenheitProperty().getValue()) {
             //int maxTemp = dailyWeather.getBottom().getMaxTempC();
-            //bottomMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getBottom().getMaxTempC()));
-            bottomMaxTemp.setText("Max Temperature: " + "10C");
+            bottomMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getBottom().getMaxTempC()));
+//            bottomMaxTemp.setText("Max Temperature: " + "10C");
         } else {
             //int maxTemp = dailyWeather.getBottom().getMaxTempF();
-            //bottomMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getBottom().getMaxTempF()));
-            bottomMaxTemp.setText("Max Temperature: " + "47F");
+            bottomMaxTemp.setText("Max Temperature: " + String.valueOf(dailyWeather.getBottom().getMaxTempF()));
+//            bottomMaxTemp.setText("Max Temperature: " + "47F");
         }
         bottomPane.add(bottomMaxTemp,1,2);
 

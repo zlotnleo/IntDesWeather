@@ -32,10 +32,6 @@ public class HomeContent extends Content {
         super();
 
         List<ResortWeather> resorts = new ArrayList<>();
-        resorts.add(new ResortWeather("Lake Tahoa", new Coordinate(49.315355179835, -114.42647097722)));
-        resorts.add(new ResortWeather("Zel am See", new Coordinate(50.3385584502358, -115.826282501221)));
-        resorts.add(new ResortWeather("Prahova", new Coordinate(53.4842024615732, -113.556683063507)));
-        resorts.add(new ResortWeather("Val Thorens", new Coordinate(50.442417862094, -116.22459981596)));
 
         searchBar = new TextField();
         searchBar.setPrefHeight(Consts.SEARCHBAR_HEIGHT);
