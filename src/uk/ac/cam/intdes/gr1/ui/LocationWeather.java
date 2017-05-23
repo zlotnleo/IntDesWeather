@@ -18,6 +18,8 @@ public class LocationWeather extends GridPane {
 
     public LocationWeather(int width, int height){
         super();
+        dayIndex = 0;
+        showWeather();
         setPrefSize(width, height);
     }
 
