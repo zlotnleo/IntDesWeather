@@ -60,6 +60,7 @@ public class SettingPane extends GridPane{
                 SettingButton evtsource = (SettingButton)event.getSource();
                 TempBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
                 evtsource.setColor(activeColor);
+                currentStatus.setFahrenheit(false);
             }
             catch(ClassCastException cce){
                 System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
@@ -70,6 +71,7 @@ public class SettingPane extends GridPane{
                         SettingButton evtsource = (SettingButton)event.getSource();
                         TempBox.getChildren().forEach(e -> ((SettingButton)e).setColor(inactiveColor));
                         evtsource.setColor(activeColor);
+                        currentStatus.setFahrenheit(true);
                     }
                     catch(ClassCastException cce){
                         System.out.println(String.format("Found a cast exception from source of type %s", event.getSource().getClass().getName()));
