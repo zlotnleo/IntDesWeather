@@ -79,10 +79,6 @@ public class WeatherCard extends HBox {
             throw new RuntimeException(exception);
         }
 
-        this.setOnMouseClicked(e -> {
-            // TODO: need to to go to detailed vew
-        });
-
         weatherIcon.fitHeightProperty().bind(Bindings.multiply(heightProperty(), 0.8));
         weatherIcon.setPreserveRatio(true);
 

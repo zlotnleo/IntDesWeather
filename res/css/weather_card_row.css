@@ -6,6 +6,10 @@
     -fx-background-color: transparent;
 }
 
+.top-text {
+    -fx-text-fill: black;
+}
+
  /*The main scrollbar **track** CSS class*/
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
