@@ -21,7 +21,11 @@ public class RecentLocations {
                     .stream()
                     .map(s -> {
                         String[] t = s.split(" ");
-                        return new ResortWeather(t[0], new Coordinate(Double.parseDouble(t[1]), Double.parseDouble(t[2])));
+                        StringBuilder name = new StringBuilder("");
+                        for(int i = 0; i < t.length - 3; i++)
+                            name.append(t[i]).append(" ");
+                        name.append(t[t.length - 3]);
+                        return new ResortWeather(name.toString(), new Coordinate(Double.parseDouble(t[t.length - 2]), Double.parseDouble(t[t.length - 1])));
                     })
                     .collect(Collectors.toList());
 
