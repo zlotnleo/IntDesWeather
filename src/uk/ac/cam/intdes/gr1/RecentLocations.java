@@ -2,6 +2,7 @@ package uk.ac.cam.intdes.gr1;
 
 import uk.ac.cam.intdes.gr1.api.responseobjs.Coordinate;
 import uk.ac.cam.intdes.gr1.api.responseobjs.ResortWeather;
+import uk.ac.cam.intdes.gr1.ui.HomeContent;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -37,6 +38,7 @@ public class RecentLocations {
 
     public void clear(){
         recent.clear();
+        HomeContent.getInstance().setRecentLocations(recent);
     }
 
     public void addLocation(ResortWeather c){
