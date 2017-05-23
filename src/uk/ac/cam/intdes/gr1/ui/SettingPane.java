@@ -1,14 +1,11 @@
 package uk.ac.cam.intdes.gr1.ui;
 
-import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import uk.ac.cam.intdes.gr1.AppSettings;
-import uk.ac.cam.intdes.gr1.RecentLocations;
 
 public class SettingPane extends GridPane{
 
@@ -106,13 +103,13 @@ public class SettingPane extends GridPane{
 			);
 		VBox resetButton = new VBox();
 		resetButton.getChildren().add(
-				new SettingButton("Reset", e -> RecentLocations.getInstance().clear(), (int)getPrefHeight() / 5, (int)getPrefWidth() / 2 - 20, activeColor)
+				new resetButton((int)getPrefHeight() / 5, (int)getPrefWidth() / 2 - 20)
 		);
 
         this.getColumnConstraints().addAll(c1,c2);
-        addRow(0,align1,TempBox);
+        addRow(0, align1,TempBox);
         addRow(1, align2,DistBox);
-        addRow(2,align3,resetButton);
+        addRow(2, align3,resetButton);
     }
 
 }
