@@ -83,6 +83,7 @@ public class HomeContent extends Content {
 
         List<ResortWeather> resorts = SkiMapApi.getInstance().searchResorts(searchLocation, Consts.MAX_SEARCH_DIST);
         resorts.subList(Math.min(Consts.MAX_ROW_CARDS, resorts.size()), resorts.size()).clear(); // eliminate extra resorts
+        resorts.forEach(ResortWeather::fetchWeather);
 
         nearbyRow.setResorts(resorts);
     }

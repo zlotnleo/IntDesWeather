@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import uk.ac.cam.intdes.gr1.App;
@@ -207,11 +208,11 @@ public class WeatherCard extends HBox {
 
     public void setConditions(SkiingConditions conditions) {
         if (conditions.equals(SkiingConditions.Good)) {
-            conditionsCircle.setFill(Paint.valueOf("GREEN"));
+            conditionsCircle.setFill(Color.RED);
         } else if (conditions.equals(SkiingConditions.Bad)) {
-            conditionsCircle.setFill(Paint.valueOf("YELLOW"));
+            conditionsCircle.setFill(Color.YELLOW);
         } else {
-            conditionsCircle.setFill(Paint.valueOf("RED"));
+            conditionsCircle.setFill(Color.GREEN);
         }
     }
 }

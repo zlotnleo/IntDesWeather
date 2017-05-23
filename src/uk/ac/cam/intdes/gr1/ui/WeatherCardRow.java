@@ -30,7 +30,7 @@ public class WeatherCardRow extends BorderPane {
         sp.setContent(cardBox);
         sp.setFitToHeight(true);
         sp.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        sp.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         setCenter(sp);
         cardBox.getStyleClass().addAll("card-row", "scroll-pane");
 
@@ -73,8 +73,8 @@ public class WeatherCardRow extends BorderPane {
 
         for (ResortWeather resort : resorts) {
             WeatherCard card = new WeatherCard(resort);
-            HBox.setMargin(card, new Insets(15.0, 10.0, 15.0, 10.0));
-            card.prefHeightProperty().bind(Bindings.multiply(cardBox.heightProperty(), 0.6));
+            HBox.setMargin(card, new Insets(0, 10.0, 0, 10.0));
+            card.maxHeightProperty().bind(Bindings.multiply(cardBox.heightProperty(), 0.4));
             cardBox.getChildren().add(card);
         }
     }
