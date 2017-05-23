@@ -1,6 +1,5 @@
 package uk.ac.cam.intdes.gr1.ui;
 
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import uk.ac.cam.intdes.gr1.RecentLocations;
 
